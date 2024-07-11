@@ -5,7 +5,7 @@ const sidebarContent = `
             <div class="image-text">
                 <span class="image">
                     <a href="index.html">
-                        <img src="/image/member/logo.png" alt="2048">
+                        <img src="/image/logo.png" alt="2048">
                     </a>
                 </span>
                 <div class="image logo-text">
@@ -19,43 +19,43 @@ const sidebarContent = `
             <div class="menu">
                 <ul class="menu-links">
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="#" class="shellBtn">
                             <i class="iconfont icon-TargetArrow icon"></i>
                             <span class="text nac-text">玩法介绍</span>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="#" class="shellBtn">
                             <i class="iconfont icon-ClassSquare icon"></i>
                             <span class="text nac-text">难度设置</span>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="#" class="shellBtn">
                             <i class="iconfont icon-Bell icon"></i>
                             <span class="text nac-text">音量控制</span>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="#" class="shellBtn">
                             <i class="iconfont icon-ClickHand icon"></i>
                             <span class="text nac-text">模式选择</span>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a href="#" id="advice">
+                        <a href="#" id="advice" class="shellBtn">
                             <i class="iconfont icon-NotebookPencil icon"></i>
                             <span class="text nac-text">意见建议</span>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a href="#" id="productionTeam">
+                        <a href="#" id="productionTeam" class="shellBtn">
                             <i class="iconfont icon-UserMore icon"></i>
                             <span class="text nac-text">制作团队</span>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a href="#"  id="achievement">
+                        <a href="#"  id="achievement" class="shellBtn">
                             <i class="iconfont icon-Star icon"></i>
                             <span class="text nac-text">成就</span>
                         </a>
@@ -135,10 +135,10 @@ const sidebarContent = `
     <!-- 分数板 -->
     <div class="scores-container">
         <div class="score-container">
-            <span></span>
+            <span id="score" class="scores">0</span>
         </div>
         <div class="best-container">
-            <span></span>
+            <span id="best" class="scores">0</span>
         </div>
     </div>
 
@@ -151,6 +151,12 @@ const sidebarContent = `
         <span id="rankingListName">排行榜</span>
     </a>
     <div id="Ranking-Btn" class="rankingList-container"></div>
+
+    <!-- 游戏结束弹出层     -->
+    <div class="gameOverBoard">
+        <span id="loseText">输赢什么的无所谓！再开一局吧！o(*≧▽≦)ツ┏━┓</span>
+        <span id="loseTextTip">点击任意位置继续……</span>
+    </div>
 
     <!-- 背景 -->
     <div class="container">
@@ -221,10 +227,23 @@ function initUI() {
         modeSwitch = body.querySelector(".toggle-switch"),
         modeText = body.querySelector(".mode-text"),
         toggle = body.querySelector('.toggle');
+        shellBtns = body.querySelectorAll('.shellBtn');
 
     // 切换侧边栏
     toggle.addEventListener("click", () => {
         shell.classList.toggle("close");
+    });
+    shellBtns.forEach(shellBtn => {  
+        // 为每个元素添加点击事件监听器  
+        shellBtn.addEventListener("click", () => {  
+            // 检查侧边栏是否有 'close' 类（即检查侧边栏是否是关闭的）  
+            if (shell.classList.contains('close')) {  
+                // 如果侧边栏是关闭的，移除 'close' 类以展开侧边栏  
+                shell.classList.remove('close');  
+            }  
+            // 如果侧边栏已经是展开的（即没有 'close' 类），则什么也不做  
+            // 这确保了点击 '.shellBtn' 不会使已经展开的侧边栏关闭  
+        }); 
     });
 
     // 切换模式
