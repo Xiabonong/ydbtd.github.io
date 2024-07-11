@@ -61,6 +61,10 @@ const sidebarContent = `
             <div class="grid-bg"></div>
             <div class="grid-bg"></div>
         </div>
+
+        <!-- 水印 -->
+        <div id="tips">按Alt+T重置面板(最佳分数、排行榜)</div>
+
     </div>
     <nav class="shell close"> <!-- 侧边栏 -->
         <header>
@@ -229,7 +233,7 @@ const sidebarContent = `
 
     <!-- 成就弹出层 -->
     <div id="Pop-achievement" class="popup-achievement">
-        <div id="Pop-achievementHeader>
+        <div id="Pop-achievementHeader">
             <i class="iconfont icon-Star icon" id="iconAchievement"></i>
             <span id="textAchievement">成就</span>
             <button id="closeBtnAchievement" class="closePopup">
@@ -244,7 +248,9 @@ const sidebarContent = `
         <i class="iconfont icon-BarChart icon" id="rankingIcon"></i>
         <span id="rankingListName">排行榜</span>
     </a>
-    <div id="Ranking-Btn" class="rankingList-container"></div>
+    <div id="Ranking-Btn" class="rankingList-container">
+        <ol id="rankingList"></ol>
+    </div>
 
     <!-- 游戏结束弹出层     -->
     <div id="gameOverBoard" class="gameOverBoard">

@@ -30,6 +30,7 @@ body{
     --grid-color: #dbe9ee;
     --grid-bg-color: #42597a;
     --grid-shadow: #000;
+    --rank-sp: #9fddeb;
 }
 /* 夜间模式 */
 .dark{
@@ -47,6 +48,7 @@ body{
     --grid-bg-color: #171717;
     --startGameBtn-color: #5A5C68;
     --grid-shadow: #ccc;
+    --rank-sp: #797a7a;
 }
 /* 背景 */
 .container{
@@ -828,9 +830,11 @@ header{
 }
 #Pop-achievementHeader{
     background-color: red;
-    position: absolute;
-    height: 90px;
-    width: 100px;
+    position: fixed;
+    top: -1%;
+    height: 8vh;
+    width: 100vh;
+    z-index: 10000;
 }
 #iconAchievement{
     min-width: 60px;
@@ -919,7 +923,7 @@ header{
 }
 
 
-/* 开始游戏按钮Animation */
+/* 开始游戏按钮 + Animation */
 #startGameButton{
     position: fixed;
     outline: none;
@@ -1037,6 +1041,26 @@ header{
     opacity: 0.98;  
     transition: transform 0.3s ease, opacity 0.3s ease;  
 }
+.ranking-item {
+    font-size: 25px;
+    font-weight: bolder;
+    color: var(--text-color);
+    border-radius: 7px;
+    background-color: var(--primary-color-light);
+    height: 30px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.ranking-item-sp{
+    background-color: var(--rank-sp);
+}
+#rankingList{
+    position: fixed;
+    left: 14%;
+}
+li{
+    margin-bottom: 15px;
+}
+
 
 /* 游戏结束弹出层 */
 .gameOverBoard{

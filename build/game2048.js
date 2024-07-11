@@ -1,9 +1,5 @@
 // Autor: 有点不太队 || 2048游戏
 document.addEventListener("DOMContentLoaded", function () {
-
-    // 首次显示排行榜
-    // displayRanking();
-
     // 开始游戏按钮
     startGameButton.addEventListener("click", setupBoard);
 
@@ -21,45 +17,173 @@ document.addEventListener("DOMContentLoaded", function () {
     let move1 = [], merge = [], move2 = [],                    // 移动和合并动画组坐标位置记录
         animate1 = [], animate2 = [], animate3 = [];           // 可合并动画组坐标位置记录
 
-    /* 初始化游戏 */
-    function setupBoard() {
-        if (win) {
-            // 重置游戏状态
-            win = false;
-            // 更新排行榜（待做）
-            updateScore();
-            // displayRanking();
+    let gameID = 2048, scoreUpd = false;                       // 当前游戏id
+
+    document.addEventListener('keydown', function (event) {
+        // 检查是否同时按下了Alt键和t键
+        if (event.altKey && event.key === 't') {
+            event.preventDefault(); // 阻止默认行为
+            refreshJson(); // 调用刷新JSON数据的函数
+        }
+    });
+
+    // 刷新JSON数据
+    function refreshJson() {
+        console.log("刷新JSON数据");
+        reset();
+        initRanking();
+        score = 0, highScore = 0, board = new Array(16).fill(0), scoreUpd = false;
+        update();
+        updateRanking();
+    }
+
+    // 重置保存系统
+    function reset() {
+        resetRanking();
+        localStorage.removeItem('game2048Board');
+        localStorage.removeItem('game2048Score');
+        localStorage.removeItem('game2048HighScore');
+    }
+
+    // 重置排行榜用（调试）（alt+t)
+    function resetRanking() {
+        localStorage.setItem("rankingList", JSON.stringify([]));
+        displayRanking();
+    }
+
+    // 初始化游戏版及分数（保存系统）
+    initBoard();
+    function initBoard() {
+        initRanking();
+        const savedBoard = JSON.parse(localStorage.getItem('game2048Board')),
+            savedScore = JSON.parse(localStorage.getItem('game2048Score')),
+            savedHighScore = JSON.parse(localStorage.getItem('game2048HighScore')),
+            savedRanking = JSON.parse(localStorage.getItem('rankingList')) || [];
+
+        if (savedBoard) {
+            gameStarted = true;
+            board = savedBoard;
+            score = savedScore;
+            highScore = savedHighScore;
         }
 
+        savedRanking.forEach((item) => {
+            if (item.id === gameID) scoreUpd = true;
+        });
+        update();
+    }
+
+    // 保存游戏版及分数
+    function save() {
+        saveBoard();
+        saveScore();
+    }
+
+    // 保存游戏版
+    function saveBoard() {
+        localStorage.setItem('game2048Board', JSON.stringify(board));
+    }
+
+    // 保存分数
+    function saveScore() {
+        localStorage.setItem('game2048Score', JSON.stringify(score));
+        localStorage.setItem('game2048HighScore', JSON.stringify(highScore));
+    }
+
+    // 更新游戏版及分数
+    function update() {
+        updateBoard();
+        updateScore();
+        displayRanking();
+    }
+
+    /* 初始化游戏 */
+    function setupBoard() {
         // 游戏正式开始
         gameStarted = true;
+        win = false;
 
-        // 重置分数
-        score = 0;
-        updateScore();
-        
-        // 重置游戏版
-        board = new Array(16).fill(0);
+        // 重置分数及游戏版
+        score = 0, board = new Array(16).fill(0);
 
-        // 随机生成两个数字
+        // 移除动画状态
         for (let i = 0; i < grid.length; i++) grid[i].style.transform = "scale(1)";
         anime.remove(grid);
 
-        addNumber();
-        addNumber();
-
         // 颜色检查（debugging）
         // board[0] = 2;
-        for (let i = 1; i < board.length; i++)
-            // board[i] = board[i - 1] * 2;
-            // 更新游戏版（Q弹特效）
-            updateBoard();
+        // for (let i = 1; i < board.length; i++)
+        // board[i] = board[i - 1] * 2;
+
+        // 随机生成两个数字
+        addNumber();
+        addNumber();
+        save();
+
+        // 更新游戏版及分数
+        update();
     }
 
+    // 更新分数
     function updateScore() {
         document.querySelector('.score-container span').textContent = score;
         highScore = Math.max(score, highScore);
         document.querySelector('.best-container span').textContent = highScore;
+    }
+
+    // 初始化创作者的排行榜
+    function initRanking() {
+        let rank = JSON.parse(localStorage.getItem('rankingList')) || [];
+
+        if (!rank.length) {
+            rank = [
+                { score: 200, id: 'LYQ' },
+                { score: 0, id: 'LZH' },
+                { score: 0, id: 'NX' },
+                { score: 0, id: 'WX' },
+                { score: 0, id: 'XBN' }
+            ];
+            localStorage.setItem('rankingList', JSON.stringify(rank));
+        }
+    }
+
+    // 更新排行榜
+    function updateRanking() {
+        const rank = JSON.parse(localStorage.getItem('rankingList')) || [];
+        if (!scoreUpd) {
+            scoreUpd = true;
+            rank.push({ score: score, id: gameID });
+        }
+        else for (let i = 0; i < rank.length; i++) if (rank[i].id === gameID && score > rank[i].score) rank[i].score = score;
+        console.log("rank: ", rank);
+        rank.sort((a, b) => b.score - a.score);
+        localStorage.setItem('rankingList', JSON.stringify(rank));
+        displayRanking();
+    }
+
+    // 显示排行榜（5+1）——（那个1是玩家）
+    function displayRanking() {
+        const rank = JSON.parse(localStorage.getItem('rankingList')) || [];
+        const rankElement = document.getElementById('rankingList');
+        rankElement.innerHTML = '';
+
+        rank.forEach((item) => {
+            const li = document.createElement('li')
+
+            li.classList.add('ranking-item');
+
+            if (item.id === gameID){
+                li.textContent = `User: ${item.score}`;
+                li.classList.add('ranking-item-sp');
+            } 
+            else if (item.id === 'LYQ') li.textContent = `LYQ: ${item.score}`;
+            else if (item.id === 'LZH') li.textContent = `LZH: ${item.score}`;
+            else if (item.id === 'NX') li.textContent = `N X: ${item.score}`;
+            else if (item.id === 'WX') li.textContent = `W X: ${item.score}`;
+            else if (item.id === 'XBN') li.textContent = `XBN: ${item.score}`;
+
+            rankElement.appendChild(li);
+        });
     }
 
     // 在空白格子随机生成数字
@@ -127,20 +251,20 @@ document.addEventListener("DOMContentLoaded", function () {
     // 深色版
     function darkColor(num) {
         switch (num) {
-            case 2: return "#333333";    
-            case 4: return "#555555";    
-            case 8: return "#777777";    
-            case 16: return "#999999";  
-            case 32: return "#B3B3B3";   
-            case 64: return "#CCCCCC";   
-            case 128: return "#E0E0E0";  
-            case 256: return "#D3D3FF";  
-            case 512: return "#ADD8E6";  
-            case 1024: return "#87CEEB"; 
-            case 2048: return "#00BFFF"; 
-            case 4096: return "#003CBA"; 
+            case 2: return "#333333";
+            case 4: return "#555555";
+            case 8: return "#777777";
+            case 16: return "#999999";
+            case 32: return "#B3B3B3";
+            case 64: return "#CCCCCC";
+            case 128: return "#E0E0E0";
+            case 256: return "#D3D3FF";
+            case 512: return "#ADD8E6";
+            case 1024: return "#87CEEB";
+            case 2048: return "#00BFFF";
+            case 4096: return "#003CBA";
         }
-        return "#0000CC";               
+        return "#0000CC";
     }
 
     // 更新其他颜色
@@ -192,8 +316,9 @@ document.addEventListener("DOMContentLoaded", function () {
         if (grid.innerHTML.length > 4) grid.style.fontSize = `${fontSize * 0.75}px`;
 
         // 字体的参数
-        // grid.style.color = "#fff";
         // grid.style.fontWeight = "bold";
+        // grid.style.color = "#F9F6F0";
+
     }
 
     // Q弹动画及音效的使用
@@ -209,7 +334,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function jumpAnimate(grid) {
         anime({
             targets: grid,            // 目标元素
-            scale: [1, 1.15, 1],       // 缩放比例    
+            scale: [1, 1.15, 1],      // 缩放比例    
             duration: 200,            // 持续时间
             easing: 'easeInOutQuad',  // 添加缓动效果
             transformOrigin: 'center' // 确保缩放中心在元素的中心
@@ -447,8 +572,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 upd = true;
                 jump();
                 if (preBoard.join("") !== board.join("")) addNumber();
-                updateBoard();
-                updateScore(); 
+                update();
+                updateRanking(score);
+                save();
             }
             fromGrid.style.animation = '';
             fromGrid.style.zIndex = '';
@@ -472,31 +598,22 @@ document.addEventListener("DOMContentLoaded", function () {
     // 输了
     function isLose() {
         if (checkLose(board)) {
-            // 游戏结束（显示开始按钮）
+            // 游戏结束
             gameStarted = false;
-            // 更新排行榜（待做）
-            // updateLastScore();
-            // displayRanking();
-            // 先显示画面，再弹出提示框
+            // 弹窗提示
             document.getElementById('gameOverBoard').classList.add('active');
-            document.addEventListener('click', function(event) {  
-                document.getElementById('gameOverBoard').classList.remove('active');   
-            });  
+            document.addEventListener('click', function () { document.getElementById('gameOverBoard').classList.remove('active'); });
         }
     }
 
     // 赢了
     function isWin() {
         if (board.includes(2048) && !win) {
-            // 游戏可以选择性结束（显示开始按钮）
+            // 游戏可以选择性结束
             win = true;
-            // 先显示画面，再弹出提示框
-            isAnimating = true; // 卡操作
+            // 弹窗提示
             document.getElementById('gameWinBoard').classList.add('active');
-            isAnimating = false;
-            document.addEventListener('click', function(event) {  
-                document.getElementById('gameWinBoard').classList.remove('active');   
-            });  
+            document.addEventListener('click', function () { document.getElementById('gameWinBoard').classList.remove('active'); });
         }
     }
 
