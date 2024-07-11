@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // 重置分数
         score = 0;
-        // updateScore();
+        updateScore();
 
         // 重置游戏版
         board = new Array(16).fill(0);
@@ -59,10 +59,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function updateScore() {
-        // 更新分数
-        document.querySelector(".score-container span").innerText = `分数：${score}`;
-        // 更新最佳分数
-        document.querySelector(".best-container span").innerText = `最佳：${highScore}`;
+        document.querySelector('.score-container span').textContent = score;
+        highScore = Math.max(score, highScore);
+        document.querySelector('.best-container span').textContent = highScore;
     }
 
     // 在空白格子随机生成数字
@@ -130,20 +129,20 @@ document.addEventListener("DOMContentLoaded", function () {
     // 深色版
     function darkColor(num) {
         switch (num) {
-            case 2: return "#333333";    // 淡粉色
-            case 4: return "#555555";    // 淡绿色
-            case 8: return "#777777";    // 淡绿色
-            case 16: return "#999999";   // 淡绿色
-            case 32: return "#B3B3B3";   // 淡绿色
-            case 64: return "#CCCCCC";   // 淡绿色
-            case 128: return "#E0E0E0";  // 淡蓝色
-            case 256: return "#D3D3FF";  // 淡蓝色
-            case 512: return "#ADD8E6";  // 淡蓝色
-            case 1024: return "#87CEEB"; // 淡蓝色
-            case 2048: return "#00BFFF"; // 深蓝色
-            case 4096: return "#0000FF"; // 深蓝色
+            case 2: return "#333333";    
+            case 4: return "#555555";    
+            case 8: return "#777777";    
+            case 16: return "#999999";  
+            case 32: return "#B3B3B3";   
+            case 64: return "#CCCCCC";   
+            case 128: return "#E0E0E0";  
+            case 256: return "#D3D3FF";  
+            case 512: return "#ADD8E6";  
+            case 1024: return "#87CEEB"; 
+            case 2048: return "#00BFFF"; 
+            case 4096: return "#003CBA"; 
         }
-        return "#003CBA";                // 深蓝色
+        return "#0000CC";               
     }
 
     // 更新其他颜色
@@ -451,7 +450,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 jump();
                 if (preBoard.join("") !== board.join("")) addNumber();
                 updateBoard();
-                // updateScore(); 待做
+                updateScore(); 
             }
             fromGrid.style.animation = '';
             fromGrid.style.zIndex = '';
@@ -481,9 +480,8 @@ document.addEventListener("DOMContentLoaded", function () {
             // updateLastScore();
             // displayRanking();
             // 先显示画面，再弹出提示框
-            setTimeout(() => {
-                alert("输赢什么的无所谓！再开一局吧！o(*≧▽≦)ツ┏━┓");
-            }, 100);
+            document.getElementById('gameOverBoard').classList.add('active');
+            // 我做到这里了
         }
     }
 
@@ -494,9 +492,7 @@ document.addEventListener("DOMContentLoaded", function () {
             win = true;
             // 先显示画面，再弹出提示框
             isAnimating = true; // 卡操作
-            setTimeout(function () {
-                alert("恭喜你！你赢了！继续玩或者重开，任君选择吧。(￣▽￣)ノ");
-            }, 100);
+            document.getElementById('gameWinBoard').classList.add('active');
             isAnimating = false;
         }
     }

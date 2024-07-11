@@ -153,11 +153,20 @@ const sidebarContent = `
     <div id="Ranking-Btn" class="rankingList-container"></div>
 
     <!-- 游戏结束弹出层     -->
-    <div class="gameOverBoard">
-        <span id="loseText">输赢什么的无所谓！再开一局吧！o(*≧▽≦)ツ┏━┓</span>
+    <div id="gameOverBoard" class="gameOverBoard">
+        <span id="loseText">输赢什么的无所谓！<br>
+                            再开一局吧！<br>
+                            o(*≧▽≦)ツ┏━┓
         <span id="loseTextTip">点击任意位置继续……</span>
     </div>
 
+    <!-- 游戏胜利弹出层     -->
+    <div id="gameWinBoard" class="gameWinBoard">
+        <span id="winText">恭喜你！你赢了！<br> 
+                           继续玩或者重开，任君选择吧~ <br> 
+                           (￣▽￣)ノ</span>
+        <span id="winTextTip">点击任意位置继续……</span>
+    </div>
     <!-- 背景 -->
     <div class="container">
         <div class="bubbles">
@@ -234,15 +243,10 @@ function initUI() {
         shell.classList.toggle("close");
     });
     shellBtns.forEach(shellBtn => {  
-        // 为每个元素添加点击事件监听器  
         shellBtn.addEventListener("click", () => {  
-            // 检查侧边栏是否有 'close' 类（即检查侧边栏是否是关闭的）  
             if (shell.classList.contains('close')) {  
-                // 如果侧边栏是关闭的，移除 'close' 类以展开侧边栏  
                 shell.classList.remove('close');  
             }  
-            // 如果侧边栏已经是展开的（即没有 'close' 类），则什么也不做  
-            // 这确保了点击 '.shellBtn' 不会使已经展开的侧边栏关闭  
         }); 
     });
 
@@ -337,9 +341,9 @@ function showRanking() {
     });
 }
 
-// 对于Chrome、IE等  禁用缩放
+//  禁用缩放
 document.addEventListener('mousewheel', function(event) {  
     if (event.ctrlKey === true) {  
         event.preventDefault();  
     }  
-}, { passive: false }); // 注意设置passive为false，以允许preventDefault()被调用  
+}, { passive: false }); 

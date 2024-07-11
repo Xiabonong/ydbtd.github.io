@@ -10,12 +10,12 @@
     transform: translate(-50%, -50%);
     border: 15px solid var(--grid-bg-color);
     border-radius: 6px;
+    box-shadow: 1px 2px 6px #808080;
 }
 
 .game-container-bg {
     background-color: var(--grid-bg-color);
     z-index: -1;
-    border-radius: 6px;
 }
 
 .grid, .grid-bg {
@@ -29,4 +29,5 @@
     font-weight: bold;
     text-shadow: 2px 2px 4px var(--shadow);
     border-radius: 6px;
+    box-shadow: 0 3px 3px var(--grid-shadow);
 }

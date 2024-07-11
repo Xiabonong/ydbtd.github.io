@@ -12,6 +12,7 @@ body{
     padding: 0;
     background: var(--body-color);
     transition: all 0.3s ease;
+    user-select: none;
 }
 /* 设置全局变量 */
 :root{
@@ -28,6 +29,7 @@ body{
     --startGameBtn-color: #3568df;
     --grid-color: #dbe9ee;
     --grid-bg-color: #42597a;
+    --grid-shadow: #000;
 }
 /* 夜间模式 */
 .dark{
@@ -44,6 +46,7 @@ body{
     --grid-color: #3a3b3c;
     --grid-bg-color: #171717;
     --startGameBtn-color: #5A5C68;
+    --grid-shadow: #ccc;
 }
 /* 背景 */
 .container{
@@ -698,9 +701,9 @@ header{
     transition: all 0.3s ease;
     z-index: 100;
     border-radius: 10px;
-    box-shadow: 0 4px 10px var(--shadow);
+    box-shadow: 0 1px 7px var(--grid-shadow);
 }
-.score-container{
+.score-container, .best-container{
     position: absolute;
     display: flex;
     height: 78px;
@@ -713,22 +716,10 @@ header{
     box-shadow: 0 2px 6px var(--shadow);
     line-height: 85px;
     font-size: 20px;
-    justify-content: center; /* 水平居中 */  
+    justify-content: center; 
 }
 .best-container{
-    position: absolute;
-    display: flex;
-    height: 78px;
-    width: 140px;
-    border-radius: 10px;
-    top: 7%;
     left: 51%;
-    background: var(--primary-color-light);   /* --primary-color */
-    color: var(--text-color);
-    box-shadow: 0 2px 6px var(--shadow);
-    line-height: 85px;
-    font-size: 20px;
-    justify-content: center; /* 水平居中 */  
 }
 .scores{
     position: absolute;
@@ -759,6 +750,7 @@ header{
 /* 开始游戏按钮Animation */
 #startGameButton{
     position: fixed;
+    outline: none;
     padding: 10px 22px;
     top: 16%;
     left: 56%;
@@ -895,11 +887,45 @@ header{
     position: fixed;
     font-size: 30px;
     font-weight: 600;
-    top: 30%;
+    top: 20%;
     left: 10%;
     color: #fff;
 }
 #loseTextTip{
+    position: fixed;
+    font-size: 25px;
+    font-weight: 600;
+    top: 60%;
+    left: 24%;
+    color: #dad5d5;
+}
+
+/* 游戏胜利弹出层 */
+.gameWinBoard{
+    position: fixed;    /* 这里更改了position的属性值为fixed（原本为absolute） */
+    top: 50%;
+    left: 50%;
+    width: 470px;
+    height: 470px;
+    background-color: var(--grid-bg-color);
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);  
+    transition: transform 0.3s ease, opacity 0.3s ease; 
+}
+.gameWinBoard.active{  
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.95;  
+    transition: transform 0.3s ease, opacity 0.3s ease;  
+}
+#winText{
+    position: fixed;
+    font-size: 30px;
+    font-weight: 600;
+    top: 20%;
+    left: 6%;
+    color: #fff;
+}
+#winTextTip{
     position: fixed;
     font-size: 25px;
     font-weight: 600;
