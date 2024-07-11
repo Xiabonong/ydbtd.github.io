@@ -5,7 +5,7 @@ const sidebarContent = `
             <div class="image-text">
                 <span class="image">
                     <a href="index.html">
-                        <img src="/image/logo.png" alt="2048">
+                        <img src="image/logo.png" alt="2048">
                     </a>
                 </span>
                 <div class="image logo-text">
