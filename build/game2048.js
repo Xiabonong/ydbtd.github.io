@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // 重置分数
         score = 0;
         updateScore();
-
+        
         // 重置游戏版
         board = new Array(16).fill(0);
 

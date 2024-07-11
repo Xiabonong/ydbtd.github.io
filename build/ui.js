@@ -1,5 +1,67 @@
 const sidebarContent = `
 <!-- UI界面 -->
+    <div class="containerAll">
+        <!-- 分数板 -->
+        <div class="scores-container">
+            <div class="score-container">
+                <span id="score" class="scores">0</span>
+            </div>
+            <div class="best-container">
+                <span id="best" class="scores">0</span>
+            </div>
+        </div>
+
+        <!-- 开始游戏按钮 -->
+        <button id="startGameButton">开始游戏</button>
+
+        <!-- 游戏容器，包含所有游戏格子 -->
+        <div class="game-container">
+            <!-- 第一行游戏格子 -->
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <!-- 第二行游戏格子 -->
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <!-- 第三行游戏格子 -->
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <!-- 第四行游戏格子 -->
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+        </div>
+
+        <!-- 游戏背景，包含所有游戏格子 -->
+        <div class="game-container-bg">
+            <!-- 第一行游戏格子 -->
+            <div class="grid-bg"></div>
+            <div class="grid-bg"></div>
+            <div class="grid-bg"></div>
+            <div class="grid-bg"></div>
+            <!-- 第二行游戏格子 -->
+            <div class="grid-bg"></div>
+            <div class="grid-bg"></div>
+            <div class="grid-bg"></div>
+            <div class="grid-bg"></div>
+            <!-- 第三行游戏格子 -->
+            <div class="grid-bg"></div>
+            <div class="grid-bg"></div>
+            <div class="grid-bg"></div>
+            <div class="grid-bg"></div>
+            <!-- 第四行游戏格子 -->
+            <div class="grid-bg"></div>
+            <div class="grid-bg"></div>
+            <div class="grid-bg"></div>
+            <div class="grid-bg"></div>
+        </div>
+    </div>
     <nav class="shell close"> <!-- 侧边栏 -->
         <header>
             <div class="image-text">
@@ -167,25 +229,15 @@ const sidebarContent = `
 
     <!-- 成就弹出层 -->
     <div id="Pop-achievement" class="popup-achievement">
-        <i class="iconfont icon-Star icon" id="iconAchievement"></i>
-        <span id="textAchievement">成就</span>
-        <button id="closeBtnAchievement" class="closePopup">
-            <i class="iconfont icon-Close icon"></i>
-        </button>
-    </div>
-
-    <!-- 分数板 -->
-    <div class="scores-container">
-        <div class="score-container">
-            <span id="score" class="scores">0</span>
-        </div>
-        <div class="best-container">
-            <span id="best" class="scores">0</span>
+        <div id="Pop-achievementHeader>
+            <i class="iconfont icon-Star icon" id="iconAchievement"></i>
+            <span id="textAchievement">成就</span>
+            <button id="closeBtnAchievement" class="closePopup">
+                <i class="iconfont icon-Close icon"></i>
+            </button>
         </div>
     </div>
 
-    <!-- 开始游戏按钮 -->
-    <button id="startGameButton">开始游戏</button>
 
     <!-- 排行榜 -->
     <a id="rankingListBtn" class="rankingListBtn">
@@ -492,10 +544,3 @@ function showRanking() {
             else rankingBtn.classList.add('active');
     });
 }
-
-//  禁用缩放
-document.addEventListener('mousewheel', function(event) {  
-    if (event.ctrlKey === true) {  
-        event.preventDefault();  
-    }  
-}, { passive: false }); 
