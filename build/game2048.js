@@ -27,7 +27,6 @@ document.addEventListener("DOMContentLoaded", function () {
             // 重置游戏状态
             win = false;
             // 更新排行榜（待做）
-            score = 0, highScore = 0;
             updateScore();
             // displayRanking();
         }
@@ -53,7 +52,6 @@ document.addEventListener("DOMContentLoaded", function () {
         // board[0] = 2;
         for (let i = 1; i < board.length; i++)
             // board[i] = board[i - 1] * 2;
-
             // 更新游戏版（Q弹特效）
             updateBoard();
     }
@@ -481,7 +479,9 @@ document.addEventListener("DOMContentLoaded", function () {
             // displayRanking();
             // 先显示画面，再弹出提示框
             document.getElementById('gameOverBoard').classList.add('active');
-            // 我做到这里了
+            document.addEventListener('click', function(event) {  
+                document.getElementById('gameOverBoard').classList.remove('active');   
+            });  
         }
     }
 
@@ -494,6 +494,9 @@ document.addEventListener("DOMContentLoaded", function () {
             isAnimating = true; // 卡操作
             document.getElementById('gameWinBoard').classList.add('active');
             isAnimating = false;
+            document.addEventListener('click', function(event) {  
+                document.getElementById('gameWinBoard').classList.remove('active');   
+            });  
         }
     }
 
