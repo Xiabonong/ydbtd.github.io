@@ -163,7 +163,26 @@ const sidebarContent = `
 
     <!-- 音量控制弹出层 -->
     <div id="Pop-volume" class="popup-volume">
-        
+        <div id="Bgm-container" class="volumeContainer">
+            <div class="sliderValue">
+                <span id="sliderValueTextBgm" class="sliderValueText">50</span>
+            </div>
+            <div class="field">
+                <div class="value left">0</div>
+                <input type="range" id="bgm" class="volumeControl"></input>
+                <div class="value right">100</div>
+            </div>
+        </div>
+        <div id="Act-container" class="volumeContainer">
+            <div class="sliderValue">
+                <span id="sliderValueTextAct" class="sliderValueText">50</span>
+            </div>
+            <div class="field">
+                <div class="value left">0</div>
+                <input type="range" id="act" class="volumeControl"></input>
+                <div class="value right">100</div>
+            </div>
+        </div>  
     </div>
     
     <!-- 主题切换弹出层 -->
@@ -326,6 +345,7 @@ document.addEventListener('DOMContentLoaded', () => {
     closePopup();
     buttonEffect();
     showRanking();
+    volumeSync();
 });
 
 
@@ -550,3 +570,33 @@ function showRanking() {
             else rankingBtn.classList.add('active');
     });
 }
+
+// 音量显示
+function volumeSync() {
+    // BGM音量显示同步
+    const inputSliderBgm = document.querySelector('#bgm');
+    const sliderValueBgm = document.querySelector('#sliderValueTextBgm');
+    inputSliderBgm.oninput = () => {
+        let value1 = inputSliderBgm.value;
+        sliderValueBgm.textContent = value1;
+        sliderValueBgm.style.left = value1 / 2 + '%';
+        sliderValueBgm.classList.add('show');
+    }
+    inputSliderBgm.onmouseleave = () => {
+        sliderValueBgm.classList.remove('show');
+    }
+
+    // Q弹音效音量显示同步
+    const inputSliderAct = document.querySelector('#act');
+    const sliderValueAct = document.querySelector('#sliderValueTextAct');
+    inputSliderAct.oninput = () => {
+        let value2 = inputSliderAct.value;
+        sliderValueAct.textContent = value2;
+        sliderValueAct.style.left = value2 / 2 + '%';
+        sliderValueAct.classList.add('show');
+    }
+    inputSliderAct.onmouseleave = () => {
+        sliderValueAct.classList.remove('show');
+    }
+}
+

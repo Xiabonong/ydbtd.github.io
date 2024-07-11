@@ -13,6 +13,7 @@ body{
     background: var(--body-color);
     transition: all 0.3s ease;
     user-select: none;
+    font-family: sans-serif;
 }
 /* 设置全局变量 */
 :root{
@@ -31,6 +32,7 @@ body{
     --grid-bg-color: #42597a;
     --grid-shadow: #000;
     --rank-sp: #9fddeb;
+    --volume-color: #9fddeb;
 }
 /* 夜间模式 */
 .dark{
@@ -49,6 +51,7 @@ body{
     --startGameBtn-color: #5A5C68;
     --grid-shadow: #ccc;
     --rank-sp: #797a7a;
+    --volume-color: #171717;
 }
 /* 背景 */
 .container{
@@ -360,6 +363,8 @@ header{
     width: 400px;
     z-index: 200;  
     opacity: 0;
+    text-align: center;
+    place-items: center;
     background-color: var(--popbackground);
     transition: transform 0.4s ease, opacity 0.4s ease;
 }
@@ -369,11 +374,99 @@ header{
     transition: transform 0.4s ease, opacity 0.4s ease;  
 }
 
+.volumeContainer{
+    position: absolute;
+    right: 5%;
+    height: 75px;
+    width: 280px;
+    background-color: var(--volume-color);
+    border-radius: 10px;
+    padding: 0 10px 0 10px;
+    box-shadow: 2px 4px 8px var(--shadow);
+}
+#Bgm-container{
+    top: 7%;
+}
+#Act-container{
+    bottom: 9%;
+}
+.sliderValue{
+    position: relative;
+    width: 140%;
+    left: 15%;
+}
+.sliderValue span{
+    position: absolute;
+    height: 45px;
+    width: 45px;
+    transform: translateX(-70%) scale(0);
+    font-weight: 600;
+    top: -40px;
+    line-height: 55px;
+    z-index: 2;
+    color: #f4f4f4;
+    transform-origin: bottom;
+    text-shadow: 2px 2px 4px #000;
+    transition: transform 0.3s ease-in-out;
+}
+.sliderValue span.show{
+    transform: translate(-70%) scale(1);
+}
+.sliderValue span::after{
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 100%;
+    background-color: var(--volume-color); 
+    border: 3px solid #f4f4f4;
+    z-index: -1;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    border-bottom-left-radius: 50%;
+    box-shadow: 0px 0px 8px rgba(0,0,0,0.1);
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+}
+.field{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    position: relative;
+}
+.field .value{
+    position: absolute;
+    font-size: 18px;
+    color: var(--text-color);
+    font-weight: 600;
+}
+.field .value.left{
+    left: 7px;
+}
+.field .value.right{
+    right: 7px;
+}
+.volumeContainer input{
+    position: absolute;
+    left: 9%;
+    width: 75%;
+    height: 3px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    z-index: 200;
+    cursor: pointer;
+}
+
+
+
+
+
 
 /* 主题切换 */
 .popup-skin{
     position: fixed;  
-    top: 56%;  
+    top: 57.7%;  
     left: 20%;  
     border-radius: 18px;
     transform: translate(-100%, -100%) scale(0);  
@@ -1021,16 +1114,16 @@ header{
     font-size: 20px;
     font-weight: 600;
 }
-.rankingList-container{
+.rankingList-container{  /* 有改动 */
     position: fixed;  
     top: 71.5%;  
-    left: 86.6%;
+    left: 90%;
     border-radius: 18px;
     transform: translate(-15%, -15%) scale(0);  
     border: 1px solid var(--primary-color);    
     padding: 20px;  
     height: 400px;
-    width: 400px;
+    width: 300px;
     z-index: 200;  
     opacity: 0;
     background-color: var(--popbackground);
@@ -1046,6 +1139,7 @@ header{
     font-weight: bolder;
     color: var(--text-color);
     border-radius: 7px;
+    width: 200px;    /* 有改动 */
     background-color: var(--primary-color-light);
     height: 30px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;

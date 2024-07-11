@@ -137,7 +137,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (!rank.length) {
             rank = [
-                { score: 200, id: 'LYQ' },
+                { score: 0, id: 'LYQ' },
                 { score: 0, id: 'LZH' },
                 { score: 0, id: 'NX' },
                 { score: 0, id: 'WX' },
