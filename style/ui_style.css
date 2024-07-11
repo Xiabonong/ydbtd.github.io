@@ -22,7 +22,7 @@ body{
     --primary-color-light: #d6ecfa;
     --toggle-color: #ddd;
     --text-color: #04565a;
-    --popbackground: #e1e6eb;
+    --popbackground: #f0f6fc;
     --shadow: #676767;
     --memberTextName-color: #141414;
     --memberTextNum-color: #2d2d2d;
@@ -510,6 +510,47 @@ header{
     right: 7%;
     top: 5%;
 }
+/* 意见建议反馈 */
+.popup-feedback{
+    position: fixed;  
+    top: 50%;  
+    left: 50%;  
+    border-radius: 18px;
+    transform: translate(-50%, -50%) scale(0);  
+    border: 1px solid black;  
+    background-color: white;  
+    padding: 20px;  
+    height: 150px;
+    width: 500px;
+    z-index: 200;  
+    opacity: 0;  
+    background-color: var(--popbackground);
+    transition: transform 0.4s ease, opacity 0.4s ease;  
+}.popup-feedback.active {  
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;  
+    transition: transform 0.4s ease, opacity 0.4s ease;  
+}
+#feedbackText{
+    position: absolute; 
+    font-size: 30px;
+    font-weight: bold;
+    color: var(--text-color);
+    left: 10%;
+    top: 20%;
+}
+#closeBtnFeedback{
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    width: 1px;
+    height: 1px;
+    cursor: pointer;
+    position: absolute;
+    right: 11%;
+    top: 12%;
+}
+
 
 /* 制作团队 */
 .popup-productionTeam {  

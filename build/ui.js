@@ -116,8 +116,17 @@ const sidebarContent = `
         <span id="textAdvice">Contact us</span>
         <span id="textAdviceMain">有什么意见和想法就告诉我们吧……</span>
         <textarea id="contactUs" placeholder="请在这里输入："></textarea>
-        <button class="submitBtn">提交</button>
+        <button id="submitBtn" class="submitBtn">提交</button>
         <button id="closeBtnAdvice" class="closePopup">
+            <i class="iconfont icon-Close icon"></i>
+        </button>
+    </div>
+    <!-- 意见建议反馈弹出层 -->
+    <div id="Pop-feedback" class="popup-feedback">
+        <span id="feedbackText">收到你的消息啦！o(*≧▽≦)ツ <br>
+                                感谢反馈！
+        </span>
+        <button id="closeBtnFeedback" class="closePopup">
             <i class="iconfont icon-Close icon"></i>
         </button>
     </div>
@@ -406,6 +415,12 @@ function closePopup() {
         popUp7.classList.remove('active');
         popUp8.classList.remove('active');
     });
+    document.getElementById('submitBtn').addEventListener('click', function (event) {
+        event.preventDefault();
+        popUp6.classList.remove('active');
+        document.getElementById('Pop-feedback').classList.add('active');
+        document.getElementById("contactUs").value = "";
+    });
 
     // 制作团队（popUp7）
     document.getElementById('productionTeam').addEventListener('click', function (event) {
@@ -447,6 +462,7 @@ function closePopup() {
             popUp6.classList.remove('active');
             popUp7.classList.remove('active');
             popUp8.classList.remove('active');
+            document.getElementById('Pop-feedback').classList.remove('active');
         });
     }
 }
