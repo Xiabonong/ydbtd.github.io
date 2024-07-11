@@ -19,25 +19,31 @@ const sidebarContent = `
             <div class="menu">
                 <ul class="menu-links">
                     <li class="nav-link">
-                        <a href="#" class="shellBtn">
+                        <a href="#" id="introduction" class="shellBtn">
                             <i class="iconfont icon-TargetArrow icon"></i>
                             <span class="text nac-text">玩法介绍</span>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a href="#" class="shellBtn">
+                        <a href="#" id="difficulty" class="shellBtn">
                             <i class="iconfont icon-ClassSquare icon"></i>
                             <span class="text nac-text">难度设置</span>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a href="#" class="shellBtn">
+                        <a href="#" id="volume" class="shellBtn">
                             <i class="iconfont icon-Bell icon"></i>
                             <span class="text nac-text">音量控制</span>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a href="#" class="shellBtn">
+                        <a href="#" id="skin" class="shellBtn">
+                            <i class="iconfont icon-SettingSemicircle icon"></i>
+                            <span class="text nac-text">主题切换</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#" id="modeChoice" class="shellBtn">
                             <i class="iconfont icon-ClickHand icon"></i>
                             <span class="text nac-text">模式选择</span>
                         </a>
@@ -77,6 +83,33 @@ const sidebarContent = `
         </div>
     </nav>
 
+    <!-- 玩法介绍弹出层 -->
+    <div id="Pop-introduction" class="popup-introduction">
+        <button id="closeBtnIntroduction" class="closePopup">
+            <i class="iconfont icon-Close icon"></i>
+        </button>
+    </div>
+
+    <!-- 难度设置弹出层 -->
+    <div id="Pop-difficulty" class="popup-difficulty">
+        
+    </div>
+
+    <!-- 音量控制弹出层 -->
+    <div id="Pop-volume" class="popup-volume">
+        
+    </div>
+    
+    <!-- 主题切换弹出层 -->
+    <div id="Pop-skin" class="popup-skin">
+        
+    </div>
+
+    <!-- 模式选择弹出层 -->
+    <div id="Pop-modeChoice" class="popup-modeChoice">
+        
+    </div>
+
     <!-- 意见建议弹出层 -->
     <div id="Pop-advice" class="popup-advice">
         <i class="iconfont icon-NotebookPencil icon" id="iconAdvice"></i>
@@ -84,7 +117,7 @@ const sidebarContent = `
         <span id="textAdviceMain">有什么意见和想法就告诉我们吧……</span>
         <textarea id="contactUs" placeholder="请在这里输入："></textarea>
         <button class="submitBtn">提交</button>
-        <button onclick="closePopupAdvice()" id="closeBtnAdvice" class="closePopup">
+        <button id="closeBtnAdvice" class="closePopup">
             <i class="iconfont icon-Close icon"></i>
         </button>
     </div>
@@ -241,6 +274,14 @@ function initUI() {
     // 切换侧边栏
     toggle.addEventListener("click", () => {
         shell.classList.toggle("close");
+        document.getElementById('Pop-introduction').classList.remove('active');
+        document.getElementById('Pop-difficulty').classList.remove('active');
+        document.getElementById('Pop-volume').classList.remove('active');
+        document.getElementById('Pop-skin').classList.remove('active');
+        document.getElementById('Pop-modeChoice').classList.remove('active');
+        document.getElementById('Pop-advice').classList.remove('active');
+        document.getElementById('Pop-productionTeam').classList.remove('active');
+        document.getElementById('Pop-achievement').classList.remove('active');
     });
     shellBtns.forEach(shellBtn => {  
         shellBtn.addEventListener("click", () => {  
@@ -273,35 +314,125 @@ function waterMark() {
 
 function closePopup() {
     // 弹出层（用于开启和关闭层）
-    var popUp1 = document.getElementById('Pop-advice');
-    var popUp2 = document.getElementById('Pop-productionTeam');
-    var popUp3 = document.getElementById('Pop-achievement');
+    var popUp1 = document.getElementById('Pop-introduction');
+    var popUp2 = document.getElementById('Pop-difficulty');
+    var popUp3 = document.getElementById('Pop-volume');
+    var popUp4 = document.getElementById('Pop-skin');
+    var popUp5 = document.getElementById('Pop-modeChoice');
+    var popUp6 = document.getElementById('Pop-advice');
+    var popUp7 = document.getElementById('Pop-productionTeam');
+    var popUp8 = document.getElementById('Pop-achievement');
 
-    // 意见建议（popUp1）
-    document.getElementById('advice').addEventListener('click', function (event) {
+    // 玩法介绍（popUp1）
+    document.getElementById('introduction').addEventListener('click', function (event) {
         event.preventDefault();
         if (popUp1.classList.contains('active')) popUp1.classList.remove('active');
         else popUp1.classList.add('active');
         popUp2.classList.remove('active');
         popUp3.classList.remove('active');
+        popUp4.classList.remove('active');
+        popUp5.classList.remove('active');
+        popUp6.classList.remove('active');
+        popUp7.classList.remove('active');
+        popUp8.classList.remove('active');
     });
 
-    // 制作团队（popUp2）
-    document.getElementById('productionTeam').addEventListener('click', function (event) {
+    // 难度设置（popUp2）
+    document.getElementById('difficulty').addEventListener('click', function (event) {
         event.preventDefault();
-        popUp1.classList.remove('active');
         if (popUp2.classList.contains('active')) popUp2.classList.remove('active');
         else popUp2.classList.add('active');
+        popUp1.classList.remove('active');
         popUp3.classList.remove('active');
+        popUp4.classList.remove('active');
+        popUp5.classList.remove('active');
+        popUp6.classList.remove('active');
+        popUp7.classList.remove('active');
+        popUp8.classList.remove('active');
     });
 
-    // 成就（popUp3）
-    document.getElementById('achievement').addEventListener('click', function (event) {
+    // 音量控制（popUp3）
+    document.getElementById('volume').addEventListener('click', function (event) {
         event.preventDefault();
-        popUp1.classList.remove('active');
-        popUp2.classList.remove('active');
         if (popUp3.classList.contains('active')) popUp3.classList.remove('active');
         else popUp3.classList.add('active');
+        popUp1.classList.remove('active');
+        popUp2.classList.remove('active'); 
+        popUp4.classList.remove('active');
+        popUp5.classList.remove('active');
+        popUp6.classList.remove('active');
+        popUp7.classList.remove('active');
+        popUp8.classList.remove('active');
+    });
+
+    // 主题切换（popUp4）
+    document.getElementById('skin').addEventListener('click', function (event) {
+        event.preventDefault();
+        if (popUp4.classList.contains('active')) popUp4.classList.remove('active');
+        else popUp4.classList.add('active');
+        popUp1.classList.remove('active');
+        popUp2.classList.remove('active'); 
+        popUp3.classList.remove('active');
+        popUp5.classList.remove('active');
+        popUp6.classList.remove('active');
+        popUp7.classList.remove('active');
+        popUp8.classList.remove('active');
+    });
+
+    // 模式选择（popUp5）
+    document.getElementById('modeChoice').addEventListener('click', function (event) {
+        event.preventDefault();
+        if (popUp5.classList.contains('active')) popUp5.classList.remove('active');
+        else popUp5.classList.add('active');
+        popUp1.classList.remove('active');
+        popUp2.classList.remove('active'); 
+        popUp3.classList.remove('active');
+        popUp4.classList.remove('active');
+        popUp6.classList.remove('active');
+        popUp7.classList.remove('active');
+        popUp8.classList.remove('active');
+    });
+
+    // 意见建议（popUp6）
+    document.getElementById('advice').addEventListener('click', function (event) {
+        event.preventDefault();
+        if (popUp6.classList.contains('active')) popUp6.classList.remove('active');
+        else popUp6.classList.add('active');
+        popUp1.classList.remove('active');
+        popUp2.classList.remove('active'); 
+        popUp3.classList.remove('active');
+        popUp4.classList.remove('active');
+        popUp5.classList.remove('active');
+        popUp7.classList.remove('active');
+        popUp8.classList.remove('active');
+    });
+
+    // 制作团队（popUp7）
+    document.getElementById('productionTeam').addEventListener('click', function (event) {
+        event.preventDefault();
+        if (popUp7.classList.contains('active')) popUp7.classList.remove('active');
+        else popUp7.classList.add('active');
+        popUp1.classList.remove('active');
+        popUp2.classList.remove('active'); 
+        popUp3.classList.remove('active');
+        popUp4.classList.remove('active');
+        popUp5.classList.remove('active');
+        popUp6.classList.remove('active');
+        popUp8.classList.remove('active');
+    });
+
+    // 成就（popUp8）
+    document.getElementById('achievement').addEventListener('click', function (event) {
+        event.preventDefault();
+        if (popUp8.classList.contains('active')) popUp8.classList.remove('active');
+        else popUp8.classList.add('active');
+        popUp1.classList.remove('active');
+        popUp2.classList.remove('active'); 
+        popUp3.classList.remove('active');
+        popUp4.classList.remove('active');
+        popUp5.classList.remove('active');
+        popUp6.classList.remove('active');
+        popUp7.classList.remove('active');
     });
 
     // 统一关闭弹出层
@@ -309,8 +440,13 @@ function closePopup() {
     for (var i = 0; i < closeButton.length; i++) {
         closeButton[i].addEventListener('click', function () {
             popUp1.classList.remove('active');
-            popUp2.classList.remove('active');
+            popUp2.classList.remove('active'); 
             popUp3.classList.remove('active');
+            popUp4.classList.remove('active');
+            popUp5.classList.remove('active');
+            popUp6.classList.remove('active');
+            popUp7.classList.remove('active');
+            popUp8.classList.remove('active');
         });
     }
 }

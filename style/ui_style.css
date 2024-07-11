@@ -289,6 +289,131 @@ header{
 
 /* 弹出层： */
 
+/* 玩法介绍 */
+.popup-introduction{
+    position: fixed;  
+    top: 50%;  
+    left: 50%;  
+    border-radius: 18px;
+    transform: translate(-50%, -50%) scale(0);  
+    border: 1px solid black;  
+    padding: 20px;  
+    height: 700px;
+    width: 1000px;
+    z-index: 200;  
+    opacity: 0;
+    background-color: var(--popbackground);
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+.popup-introduction.active{
+    transform: translate(-50%, -50%) scale(1); 
+    opacity: 1;  
+    transition: transform 0.4s ease, opacity 0.4s ease;  
+}
+#closeBtnIntroduction{
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    width: 1px;
+    height: 1px;
+    cursor: pointer;
+    position: absolute;
+    right: 6%;
+    top: 4%;
+}
+
+/* 难度设置 */
+.popup-difficulty{
+    position: fixed;  
+    top: 37%;  
+    left: 23%;  
+    border-radius: 18px;
+    transform: translate(-100%, -100%) scale(0);  
+    border: 1px solid black;  
+    padding: 20px;  
+    height: 300px;
+    width: 300px;
+    z-index: 200;  
+    opacity: 0;
+    background-color: var(--popbackground);
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+.popup-difficulty.active{
+    transform: translate(-50%, -50%) scale(1); 
+    opacity: 0.95;  
+    transition: transform 0.4s ease, opacity 0.4s ease;  
+}
+
+
+/* 音量控制 */
+.popup-volume{
+    position: fixed;  
+    top: 38%;  
+    left: 26%;  
+    border-radius: 18px;
+    transform: translate(-100%, -100%) scale(0);  
+    border: 1px solid black;  
+    padding: 20px;  
+    height: 200px;
+    width: 400px;
+    z-index: 200;  
+    opacity: 0;
+    background-color: var(--popbackground);
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+.popup-volume.active{
+    transform: translate(-50%, -50%) scale(1); 
+    opacity: 0.95;  
+    transition: transform 0.4s ease, opacity 0.4s ease;  
+}
+
+
+/* 主题切换 */
+.popup-skin{
+    position: fixed;  
+    top: 56%;  
+    left: 20%;  
+    border-radius: 18px;
+    transform: translate(-100%, -100%) scale(0);  
+    border: 1px solid black;  
+    padding: 20px;  
+    height: 400px;
+    width: 200px;
+    z-index: 200;  
+    opacity: 0;
+    background-color: var(--popbackground);
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+.popup-skin.active{
+    transform: translate(-50%, -50%) scale(1); 
+    opacity: 0.95;  
+    transition: transform 0.4s ease, opacity 0.4s ease;  
+}
+
+
+/* 模式选择 */
+.popup-modeChoice{
+    position: fixed;  
+    top: 49%;  
+    left: 20%;  
+    border-radius: 18px;
+    transform: translate(-100%, -100%) scale(0);  
+    border: 1px solid black;  
+    padding: 20px;  
+    height: 150px;
+    width: 200px;
+    z-index: 200;  
+    opacity: 0;
+    background-color: var(--popbackground);
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+.popup-modeChoice.active{
+    transform: translate(-50%, -50%) scale(1); 
+    opacity: 1;  
+    transition: transform 0.4s ease, opacity 0.4s ease;  
+}
+
+
 /* 意见建议 */
 .popup-advice {  
     position: fixed;  
@@ -297,7 +422,6 @@ header{
     border-radius: 18px;
     transform: translate(-50%, -50%) scale(0);  
     border: 1px solid black;  
-    background-color: white;  
     padding: 20px;  
     height: 500px;
     width: 800px;
