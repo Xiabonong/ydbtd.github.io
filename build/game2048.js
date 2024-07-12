@@ -653,4 +653,79 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         if (dir !== null) game2048();
     });
+    let startX, startY; // 开始触摸或点击的坐标
+    let isTouching = false, isSwipeModeEnabled; // 标记是否正在触摸或点击
+
+    // 为按钮添加点击事件监听器来切换滑动模式
+    document.getElementById('toggleSwipeMode').addEventListener('click', function () {
+        const body = document.body;
+        isSwipeModeEnabled = !isSwipeModeEnabled; // 切换滑动模式的状态
+        this.textContent = isSwipeModeEnabled ? "禁用滑动模式" : "启动滑动模式"; // 更新按钮文本
+        this.style.backgroundColor = isSwipeModeEnabled ? "gray" : "";
+        this.style.color = isSwipeModeEnabled ? "white" : "";
+
+        if (isSwipeModeEnabled) {
+            // 新增类禁止滚动和文本选择
+            body.classList.add('no-scroll');
+            document.addEventListener('mousedown', pDB, false);
+        } else {
+            // 移除类来恢复滚动和文本选择
+            body.classList.remove('no-scroll');
+            document.removeEventListener('mousedown', pDB, false);
+        }
+    });
+
+
+    function pDB(e) {
+        // 阻止默认行为，包括文本选择和其他可能的行为
+        e.preventDefault();
+    }
+
+    // 触摸开始或鼠标按下
+    function handleStart(event) {
+        // 如果没有启用滑动模式，则不执行
+        if (!isSwipeModeEnabled) return;
+        isTouching = true;
+        // 兼容触摸事件和鼠标事件
+        const touch = event.touches ? event.touches[0] : event;
+        startX = touch.clientX;
+        startY = touch.clientY;
+    }
+
+    // 触摸结束或鼠标释放
+    function handleEnd(event) {
+        if (!isTouching || !isSwipeModeEnabled) return; // 如果没有开始触摸或点击，则不执行
+        isTouching = false;
+
+        // 兼容触摸事件和鼠标事件
+        const touch = event.changedTouches ? event.changedTouches[0] : event;
+        const moveEndX = touch.clientX;
+        const moveEndY = touch.clientY;
+        const X = moveEndX - startX;
+        const Y = moveEndY - startY;
+
+        if (!gameStarted || isAnimating) return;
+        upd = false;
+
+        const MIN_DISTANCE = 10; // 设置最小滑动距离
+        if (Math.abs(X) > Math.abs(Y) && Math.abs(X) > MIN_DISTANCE) {
+            // 判断左右滑动
+            if (X > 0) dir = "right";
+            else dir = "left";
+        } else if (Math.abs(Y) > Math.abs(X) && Math.abs(Y) > MIN_DISTANCE) {
+            // 判断上下滑动
+            if (Y > 0) dir = "down";
+            else dir = "up";
+        }
+        if(dir !== null) game2048();
+    }
+
+    // 添加触摸事件监听器
+    document.addEventListener('touchstart', handleStart, false);
+    document.addEventListener('touchend', handleEnd, false);
+
+    // 添加鼠标事件监听器
+    document.addEventListener('mousedown', handleStart, false);
+    document.addEventListener('mouseup', handleEnd, false);
 });
+

@@ -23,7 +23,7 @@ body{
     --primary-color-light: #d6ecfa;
     --toggle-color: #ddd;
     --text-color: #04565a;
-    --popbackground: #f0f6fc;
+    --popbackground: #fff;  /* f0f6fc */
     --shadow: #676767;
     --memberTextName-color: #141414;
     --memberTextNum-color: #2d2d2d;
@@ -32,7 +32,6 @@ body{
     --grid-bg-color: #42597a;
     --grid-shadow: #000;
     --rank-sp: #9fddeb;
-    --volume-color: #9fddeb;
 }
 /* 夜间模式 */
 .dark{
@@ -51,50 +50,10 @@ body{
     --startGameBtn-color: #5A5C68;
     --grid-shadow: #ccc;
     --rank-sp: #797a7a;
-    --volume-color: #171717;
-}
-/* 背景 */
-.container{
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    z-index: -10;
 }
 
-/* 泡泡设定 */
-.bubbles{
-    position: fixed;
-    display: flex;
-}
-.bubbles span{
-    position: relative;
-    width: 30px;
-    height: 30px;
-    background: #4fc3dc;
-    margin: 0 4px;
-    border-radius: 50%;
-    box-shadow: 0 0 0 10px #4fc3dc44,
-    0 0 50px #4fc3dc,
-    0 0 100px #4fc3dc;
-    animation: animate 15s linear infinite;
-    animation-duration: calc(200s / var(--i));
-}
-.bubbles span:nth-child(even){
-    background: #bf35ff;
-    box-shadow: 0 0 0 10px #bf35ff44,
-    0 0 50px #bf35ff,
-    0 0 100px #bf35ff;
-}
-/* 泡泡动画 */
-@keyframes animate{
-    0%{
-        transform: translateY(120vh) scale(0);
-    }
-    100%{
-        transform: translateY(-10vh) scale(1);
-    }
-}
+
+
 
 /* 侧边栏 */
 .shell{
@@ -226,7 +185,7 @@ header{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    overflow-y: scoll;
+    overflow-y: scroll;
 }
 .menu-bar::-webkit-scrollbar{
     display: none;
@@ -250,7 +209,7 @@ header{
 .toggle-switch{
     position: absolute;
     right: 0;
-    height: 1005;
+    height: 100%;
     min-width: 60px;
     display: flex;
     align-items: center;
@@ -303,7 +262,7 @@ header{
     transform: translate(-50%, -50%) scale(0);  
     border: 1px solid black;  
     padding: 20px;  
-    height: 700px;
+    height: 770px;
     width: 1000px;
     z-index: 200;  
     opacity: 0;
@@ -379,7 +338,7 @@ header{
     right: 5%;
     height: 75px;
     width: 280px;
-    background-color: var(--volume-color);
+    background-color: var(--shell-color);
     border-radius: 10px;
     padding: 0 10px 0 10px;
     box-shadow: 2px 4px 8px var(--shadow);
@@ -420,8 +379,7 @@ header{
     content: "";
     height: 100%;
     width: 100%;
-    background-color: var(--volume-color); 
-    border: 3px solid #f4f4f4;
+    background-color: var(--text-color); 
     z-index: -1;
     left: 50%;
     transform: translateX(-50%) rotate(45deg);
@@ -470,7 +428,7 @@ header{
     font-weight: 600;
     letter-spacing: 2px;
     color: var(--text-color);
-    text-shadow: 1px 1px 2px #898989;
+    text-shadow: 0 1px 2px #898989;
 }
 #nameAct{
     position: absolute;
@@ -482,7 +440,7 @@ header{
     font-weight: 600;
     letter-spacing: 2px;
     color: var(--text-color);
-    text-shadow: 1px 1px 2px #898989;
+    text-shadow: 0 1px 2px #898989;
 }
 
 
@@ -513,13 +471,13 @@ header{
 /* 模式选择 */
 .popup-modeChoice{
     position: absolute;  
-    top: 51%;  
+    top: 48%;  
     left: 150%;  
     border-radius: 18px;
     transform: translate(-100%, -100%) scale(0);  
     border: 1px solid black;  
     padding: 20px;  
-    height: 150px;
+    height: 100px;
     width: 200px;
     z-index: 200;  
     opacity: 0;
@@ -531,6 +489,29 @@ header{
     opacity: 1;  
     transition: transform 0.4s ease, opacity 0.4s ease;  
 }
+#toggleSwipeMode{
+    position: absolute;
+    top: 30%;
+    left: 13%;
+    outline: none;
+    border-radius: 10px;
+    border: none;
+    width: 150px;
+    height: 40px;
+    background-color: var(--primary-color-light);
+    color: var(--text-color);
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 8px var(--shadow);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    text-shadow: 0 0 1px var(--shadow);
+}
+#toggleSwipeMode:active{
+    transform: scale(0.92);
+}
+
 
 
 /* 意见建议 */
@@ -629,6 +610,7 @@ header{
     right: 7%;
     top: 5%;
 }
+
 /* 意见建议反馈 */
 .popup-feedback{
     position: fixed;  
@@ -756,7 +738,7 @@ header{
     height: 280px;
     width: 220px;
     top: 17%;
-    left: 40%;
+    left: 38%;
 }
 .XBN img{
     display: flex;
@@ -767,7 +749,7 @@ header{
     overflow: hidden;
     object-fit: cover;
     top: 20%;
-    left: 43%;
+    left: 41%;
 }
 .XBN strong{
     display: flex;
@@ -778,7 +760,7 @@ header{
     letter-spacing: 2px;
     margin-top: 10px;
     top: 41%;
-    left: 46%;
+    left: 44%;
 }
 .XBN p{
     display: flex;
@@ -788,7 +770,7 @@ header{
     letter-spacing: 1px;
     margin:5px 0;
     top: 48%;
-    left: 45.6%;
+    left: 43.6%;
 }
 .LZH{
     display: flex;
@@ -796,7 +778,7 @@ header{
     height: 280px;
     width: 220px;
     top: 17%;
-    right: 3%;
+    right: 4%;
 }
 .LZH img{
     display: flex;
@@ -807,7 +789,7 @@ header{
     overflow: hidden;
     object-fit: cover;
     top: 20%;
-    left: 81%;
+    left: 77%;
 }
 .LZH strong{
     display: flex;
@@ -818,7 +800,7 @@ header{
     letter-spacing: 2px;
     margin-top: 10px;
     top: 41%;
-    left: 83.5%;
+    left: 79.5%;
 }
 .LZH p{
     display: flex;
@@ -828,7 +810,7 @@ header{
     letter-spacing: 1px;
     margin:5px 0;
     top: 48%;
-    left: 83%;
+    left: 79%;
 }
 .WX{
     display: flex;
@@ -836,7 +818,7 @@ header{
     height: 280px;
     width: 220px;
     top: 55%;
-    left: 22%;
+    left: 20%;
 }
 .WX img{
     display: flex;
@@ -847,7 +829,7 @@ header{
     overflow: hidden;
     object-fit: cover;
     top: 58%;
-    left: 25%;
+    left: 23%;
 }
 .WX strong{
     display: flex;
@@ -858,7 +840,7 @@ header{
     letter-spacing: 2px;
     margin-top: 10px;
     top: 79%;
-    left: 29%;
+    left: 27%;
 }
 .WX p{
     display: flex;
@@ -868,7 +850,7 @@ header{
     letter-spacing: 1px;
     margin:5px 0;
     top: 86%;
-    left: 27%;
+    left: 25%;
 }
 .NX{
     display: flex;
@@ -876,7 +858,7 @@ header{
     height: 280px;
     width: 220px;
     top: 55%;
-    left: 60%;
+    left: 58%;
 }
 .NX img{
     display: flex;
@@ -887,7 +869,7 @@ header{
     overflow: hidden;
     object-fit: cover;
     top: 58%;
-    left: 63%;
+    left: 61%;
 }
 .NX strong{
     display: flex;
@@ -898,7 +880,7 @@ header{
     letter-spacing: 2px;
     margin-top: 10px;
     top: 79%;
-    left: 67.4%;
+    left: 65.4%;
 }
 .NX p{
     display: flex;
@@ -908,8 +890,19 @@ header{
     letter-spacing: 1px;
     margin:5px 0;
     top: 86%;
-    left: 65.3%;
+    left: 63.3%;
 }
+.heart{
+    position: absolute;
+    top: -43%;
+    right: 0%;
+    font-weight: 600;
+    color: #b0b0b0;
+}
+.heart.active{
+    color: red;
+}
+
 #closeBtnProductionTeam{
     border-radius: 50%;
     border: none;
@@ -936,6 +929,8 @@ header{
     width: 100vh;
     z-index: 200;  
     opacity: 0;
+    display: flex;  
+    flex-direction: column;  
     overflow: hidden;
     background-color: var(--popbackground);
     transition: transform 0.4s ease, opacity 0.4s ease;  
@@ -946,18 +941,42 @@ header{
     transition: transform 0.4s ease, opacity 0.4s ease;  
 }
 #Pop-achievementHeader{
-    background-color: red;
     position: fixed;
-    top: -1%;
-    height: 8vh;
-    width: 100vh;
-    z-index: 10000;
+    top: 1%;
+    left: 1%;
+    height: 7vh;
+    width: 98vh;
+    z-index: 300;
 }
+.achievement-list-container {
+    top: 30%;
+    width: 100%;
+    max-height: calc(100% - 7vh);
+    overflow-y: auto;
+    margin-top: 7vh;
+}
+.achievement-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.achievement-item {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    background-color: #dfe1e8;
+    border-radius: 8px;
+}
+.achievement-item.completed {  
+    background-color: #d4edda; /* 已完成成就的背景色 */  
+}
+
 #iconAchievement{
     min-width: 60px;
     border-radius: 6px;
     height: 5%;
+    top: 50%;
     display: flex;
+    position: absolute;
     justify-content: left;
     font: 600 35px ''; 
 }
@@ -967,8 +986,8 @@ header{
     font-size: 40px;
     font-weight: bold;
     color: var(--text-color);
-    left: 8%;
-    top: 1.5%;
+    left: 5.5%;
+    top: 10%;
 }
 #closeBtnAchievement{
     border-radius: 50%;
@@ -978,8 +997,8 @@ header{
     height: 1px;
     cursor: pointer;
     position: absolute;
-    right: 7%;
-    top: 5%;
+    right: 5.7%;
+    top: 20%;
 }
 
 /* 分数板 */

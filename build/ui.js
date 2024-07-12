@@ -143,22 +143,22 @@ const sidebarContent = `
                 <div id="Pop-volume" class="popup-volume">
                     <div id="Bgm-container" class="volumeContainer">
                         <div class="sliderValue">
-                            <span id="sliderValueTextBgm" class="sliderValueText">50</span>
+                            <span id="sliderValueTextBgm" class="sliderValueText">10</span>
                         </div>
                         <div class="field">
                             <div class="value left">0</div>
-                            <input type="range" id="bgm" class="volumeControl"></input>
+                            <input type="range" id="bgm" class="volumeControl" value="10"></input>
                             <div class="value right">100</div>
                         </div>
                     </div>
                     <div id="nameBgm">音乐</div>
                     <div id="Act-container" class="volumeContainer">
                         <div class="sliderValue">
-                            <span id="sliderValueTextAct" class="sliderValueText">50</span>
+                            <span id="sliderValueTextAct" class="sliderValueText">10</span>
                         </div>
                         <div class="field">
                             <div class="value left">0</div>
-                            <input type="range" id="act" class="volumeControl"></input>
+                            <input type="range" id="act" class="volumeControl" value="10"></input>
                             <div class="value right">100</div>
                         </div>
                     </div>  
@@ -167,9 +167,11 @@ const sidebarContent = `
 
                 <!-- 主题切换弹出层 -->
                 <div id="Pop-skin" class="popup-skin"> </div>
-                
+
                 <!-- 模式选择弹出层 -->
-                <div id="Pop-modeChoice" class="popup-modeChoice"> </div>
+                <div id="Pop-modeChoice" class="popup-modeChoice">
+                    <button id="toggleSwipeMode" class="fixed-top-right">启动滑动模式</button>
+                </div>
 
             </div>
             <div class="bottom-content">
@@ -222,26 +224,31 @@ const sidebarContent = `
             <img src="image/member/LYQ.jpg" alt="Long">
             <strong>龍毅翹</strong>
             <p>2307010131</p>
+            <i class="iconfont icon-UserHeart icon heart"></i>
         </div>
         <div class="XBN">
             <img src="image/member/XBN.jpg" alt="Xia">
             <strong>夏伯农</strong>
             <p>2307010420</p>
+            <i class="iconfont icon-UserHeart icon heart"></i>
         </div>
         <div class="LZH">
             <img src="image/member/LZH.jpg" alt="Liu">
             <strong>刘子菡</strong>
             <p>2307010113</p>
+            <i class="iconfont icon-UserHeart icon heart"></i>
         </div>
         <div class="WX">
             <img src="image/member/WX.jpg" alt="Wang">
             <strong>王檄</strong>
             <p>2307010215</p>
+            <i class="iconfont icon-UserHeart icon heart"></i>
         </div>
         <div class="NX">
             <img src="image/member/NX.jpg" alt="Niu">
             <strong>牛翔</strong>
             <p>2307010310</p>
+            <i class="iconfont icon-UserHeart icon heart"></i>
         </div>
         <button id="closeBtnProductionTeam" class="closePopup">
             <i class="iconfont icon-Close icon"></i>
@@ -256,6 +263,104 @@ const sidebarContent = `
             <button id="closeBtnAchievement" class="closePopup">
                 <i class="iconfont icon-Close icon"></i>
             </button>
+        </div>
+        <div class="achievement-list-container">  
+            <ul class="achievement-list">  
+                <!-- 成就列表项 -->  
+                <li class="achievement-item">  
+                    <h3>梦开始的地方</h3>  
+                    <p>这是什么？点一下</p>  
+                </li>  
+                <li class="achievement-item">  
+                    <h3>前面的可是地狱啊</h3>  
+                    <p>现在你已经学会2+2=4了，接下来让我们翻开高等数学……</p>  
+                </li>  
+                <li class="achievement-item">  
+                    <h3>初出茅庐</h3>  
+                    <p>孺子可教也</p>  
+                </li>  
+                <li class="achievement-item">  
+                    <h3>小试牛刀</h3>  
+                    <p>你也喜欢这种丝滑合并的感觉吧？</p>  
+                </li>  
+                <li class="achievement-item">  
+                    <h3>失败是成功他妈</h3>  
+                    <p>这不会是最后一次…………吧？</p>  
+                </li>  
+                <li class="achievement-item">  
+                    <h3>键之力三段</h3>  
+                    <p>三十年河东，三十年河西……</p>  
+                </li>  
+                <li class="achievement-item">  
+                    <h3>大键师</h3>  
+                    <p>去吧，佛生气键盘莲花！</p>  
+                </li>  
+                <li class="achievement-item">  
+                    <h3>键宗强者，恐怖如斯</h3>  
+                    <p>三年之期已到……</p>  
+                </li>  
+                <li class="achievement-item">  
+                    <h3>键帝</h3>  
+                    <p>你的键盘还好吗？</p>  
+                </li>  
+                <li class="achievement-item">  
+                    <h3>终于等到你</h3>  
+                    <p>还好你没放弃</p>  
+                </li>  
+                <li class="achievement-item">  
+                    <h3>爱要大声说出来</h3>  
+                    <p>恨也是（第一次使用意见反馈）</p>  
+                </li>  
+                <li class="achievement-item">  
+                    <h3>耳膜破坏者</h3>  
+                    <p>你不会在外放吧？</p>  
+                </li>  
+                <li class="achievement-item">  
+                    <h3>盲生，你发现了华点</h3>  
+                    <p>好奇心害死猫，但咱是人</p>  
+                </li>  
+                <li class="achievement-item">  
+                    <h3>虔诚</h3>  
+                    <p>你真的，我哭死</p>  
+                </li>  
+                <li class="achievement-item">  
+                    <h3>夜猫子</h3>  
+                    <p>晚上更有感觉（确信）</p>  
+                </li>  
+                <li class="achievement-item">  
+                    <h3>名人</h3>  
+                    <p>大佬给签个名~</p>  
+                </li>  
+                <li class="achievement-item">  
+                    <h3>听我说蟹蟹你</h3>  
+                    <p>因为有你，温暖了四季</p>  
+                </li>  
+                <li class="achievement-item">  
+                    <h3>建议见意见议建</h3>  
+                    <p>咋的，你意见很大啊（心虚）</p>  
+                </li>  
+                <!-- 隐藏成就 -->
+                <li class="achievement-item">  
+                    <h3>闪电侠</h3>  
+                    <p>不是哥们，搁着放鞭炮呢</p>  
+                </li>  
+                <li class="achievement-item">  
+                    <h3>熊孩子</h3>  
+                    <p>开关都给你玩坏了！</p>  
+                </li>  
+                <li class="achievement-item">  
+                    <h3>思考者</h3>  
+                    <p>醒醒，月亮都晒屁股了</p>  
+                </li>  
+                <li class="achievement-item">  
+                    <h3>无他，唯手熟尔</h3>  
+                    <p>啊？？？</p>  
+                </li>  
+                <li class="achievement-item">  
+                    <h3>沉浸式小游戏</h3>  
+                    <p>有这么好玩吗？（挠头）</p>  
+                </li>  
+            </ul>  
         </div>
     </div>
 
@@ -283,55 +388,6 @@ const sidebarContent = `
                            继续玩或者重开，任君选择吧~ <br> 
                            (￣▽￣)ノ</span>
         <span id="winTextTip">点击任意位置继续……</span>
-    </div>
-    <!-- 背景 -->
-    <div class="container">
-        <div class="bubbles">
-            <span style="--i:11;"></span>
-            <span style="--i:14;"></span>
-            <span style="--i:24;"></span>
-            <span style="--i:10;"></span>
-            <span style="--i:14;"></span>
-            <span style="--i:23;"></span>
-            <span style="--i:18;"></span>
-            <span style="--i:16;"></span>
-            <span style="--i:19;"></span>
-            <span style="--i:20;"></span>
-            <span style="--i:22;"></span>
-            <span style="--i:25;"></span>
-            <span style="--i:18;"></span>
-            <span style="--i:21;"></span>
-            <span style="--i:15;"></span>
-            <span style="--i:13;"></span>
-            <span style="--i:26;"></span>
-            <span style="--i:17;"></span>
-            <span style="--i:13;"></span>
-            <span style="--i:28;"></span>
-            <span style="--i:11;"></span>
-            <span style="--i:12;"></span>
-            <span style="--i:24;"></span>
-            <span style="--i:10;"></span>
-            <span style="--i:14;"></span>
-            <span style="--i:23;"></span>
-            <span style="--i:18;"></span>
-            <span style="--i:16;"></span>
-            <span style="--i:19;"></span>
-            <span style="--i:20;"></span>
-            <span style="--i:22;"></span>
-            <span style="--i:25;"></span>
-            <span style="--i:18;"></span>
-            <span style="--i:21;"></span>
-            <span style="--i:15;"></span>
-            <span style="--i:13;"></span>
-            <span style="--i:26;"></span>
-            <span style="--i:17;"></span>
-            <span style="--i:13;"></span>
-            <span style="--i:30;"></span>
-            <span style="--i:14;"></span>
-            <span style="--i:23;"></span>
-            <span style="--i:18;"></span>
-            <span style="--i:16;"></span>
-        </div>
     </div>
 `;
 
@@ -511,6 +567,11 @@ function closePopup() {
         popUp6.classList.remove('active');
         popUp8.classList.remove('active');
     });
+    document.querySelectorAll('.heart').forEach(function(heart) {  
+        heart.addEventListener('click', function() {  
+            this.classList.toggle('active');  
+        });  
+    });
 
     // 成就（popUp8）
     document.getElementById('achievement').addEventListener('click', function (event) {
@@ -541,6 +602,15 @@ function closePopup() {
             document.getElementById('Pop-feedback').classList.remove('active');
         });
     }
+
+    // 点击开始按钮关闭侧边弹出层
+    document.getElementById('startGameButton').addEventListener('click', function (event) {
+        popUp2.classList.remove('active'); 
+        popUp3.classList.remove('active');
+        popUp4.classList.remove('active');
+        popUp5.classList.remove('active');
+        document.querySelector('nav').classList.add('close');
+    });
 }
 
 function buttonEffect() {
@@ -596,5 +666,14 @@ function volumeSync() {
     inputSliderAct.onmouseleave = () => {
         sliderValueAct.classList.remove('show');
     }
+
+    // 阻止方向键的默认行为  
+    document.querySelectorAll('.volumeControl').forEach(function(volumeControl) {  
+        volumeControl.addEventListener('keydown', function(event) {  
+            if (event.key === 'ArrowLeft' || event.key === 'ArrowRight' || event.key === 'ArrowUp' || event.key === 'ArrowDown') {  
+                event.preventDefault();  
+            } 
+        });  
+    });
 }
 
