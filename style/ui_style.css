@@ -32,6 +32,7 @@ body{
     --grid-bg-color: #42597a;
     --grid-shadow: #000;
     --rank-sp: #9fddeb;
+    --introduction-bg-color: #f7f7f7;
 }
 /* 夜间模式 */
 .dark{
@@ -50,9 +51,85 @@ body{
     --startGameBtn-color: #5A5C68;
     --grid-shadow: #ccc;
     --rank-sp: #797a7a;
+    --introduction-bg-color: #3a3b3c;
 }
-
-
+/* 暮土金 */
+.gold{
+    --body-color: #faf8ef;
+    --shell-color: #fff;
+    --primary-color: #30251b;
+    --primary-color-light: #faefd6;
+    --toggle-color: #ddd;
+    --text-color: #734D29;
+    --popbackground: #fff;
+    --shadow: #676767;
+    --memberTextName-color: #141414;
+    --memberTextNum-color: #2d2d2d;
+    --grid-color: #eee5db;
+    --grid-bg-color: #84694f;
+    --startGameBtn-color: #f59563;
+    --grid-shadow: #000;
+    --rank-sp: #ebd49f;
+    --introduction-bg-color: #f7f7f7;
+}
+/* 海湾蓝 */
+.blue{
+    --body-color: #ddf7f5;     
+    --shell-color: #fff;
+    --primary-color: #0a86bf;
+    --primary-color-light: #d6ecfa;
+    --toggle-color: #ddd;
+    --text-color: #04565a;
+    --popbackground: #fff;  /* f0f6fc */
+    --shadow: #676767;
+    --memberTextName-color: #141414;
+    --memberTextNum-color: #2d2d2d;
+    --startGameBtn-color: #3568df;
+    --grid-color: #dbe9ee;
+    --grid-bg-color: #42597a;
+    --grid-shadow: #000;
+    --rank-sp: #9fddeb;
+    --introduction-bg-color: #f7f7f7;
+}
+/* 梦幻粉 */
+.pink{
+    --body-color: #f5ddf7;     
+    --shell-color: #fff;
+    --primary-color: #bf0aa7;
+    --primary-color-light: #f4d6fa;
+    --toggle-color: #ddd;
+    --text-color: #54045a;
+    --popbackground: #fff;  
+    --shadow: #676767;
+    --memberTextName-color: #141414;
+    --memberTextNum-color: #2d2d2d;
+    --startGameBtn-color: #df35c8;
+    --grid-color: #e9dbee;
+    --grid-bg-color: #7a4277;
+    --grid-shadow: #000;
+    --rank-sp: #dc9feb;
+    --introduction-bg-color: #f7f7f7;
+}
+/* 马卡龙 */
+.macaroon{
+    --body-color: #E6E6FA;
+    --shell-color: #fff;
+    --primary-color: #a674d7;
+    --primary-color-light: #ece6f4;
+    --toggle-color: #ddd;
+    --text-color: #1d454d;
+    --popbackground: #c8cef0;
+    --shadow: #778a94;
+    --memberTextName-color: #141414;
+    --memberTextNum-color: #2d2d2d;
+    --grid-color: #E4FEFF;
+    --grid-bg-color: #e9b8f1;
+    --startGameBtn-color: #5677e4;
+    --grid-shadow: #000;
+    --rank-sp: #BFFBFF; 
+    --introduction-bg-color: #edefff;
+}
+/* 赛博风 */
 
 
 /* 侧边栏 */
@@ -288,6 +365,8 @@ header{
     max-height: calc(100% - 7vh);
     overflow-y: auto;
     margin-top: 7vh;
+    background-color: var(--introduction-bg-color);
+    border-radius: 10px;
 }
 #iconIntroduction{
     min-width: 60px;
@@ -319,6 +398,76 @@ header{
     right: 4%;
     top: 20%;
 }
+.introduction-container h2{
+    color: var(--text-color);
+    font-size: 38px;
+    padding: 10px;
+}
+.introduction-container h3{
+    padding: 10px;
+    color: var(--memberTextNum-color);
+    font-size: 25px;
+}
+.introduction-container p{
+    color: var(--memberTextName-color);
+    font-size: 22px;
+    font-weight: 400;
+    padding-left: 30px;
+    padding-right: 10px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+.introduction-container img{
+    width: 250px;
+    padding-left: 30px;
+}
+.introductionNav{
+    position: fixed;
+    right: 5%;
+}
+#introductionNav{
+    cursor: pointer;
+    background-color: var(--rank-sp);
+    border-radius: 3px;
+}
+#iconIntroductionNav{
+    font-weight: 800;
+    font-size: 40px;
+}
+#introductionNavName{
+    color: var(--text-color);
+    font-weight: 800;
+    font-size: 20px;
+}
+.introductionNav-container{
+    position: fixed;
+    width: 160px;
+    height: 240px;
+    background-color: #cccccc;
+    box-shadow: 1px 1px 3px var(--grid-shadow);
+    right: -3%;
+    top: 37%;
+    border-radius: 10px;
+    transform: translate(0%, -100%) scale(0); 
+    opacity: 0;  
+    transition: transform 0.3s ease, opacity 0.3s ease;  
+}
+.introductionNav-container.active{
+    transform: translate(-50%, -50%) scale(1); 
+    opacity: 0.9;  
+    transition: transform 0.3s ease, opacity 0.3s ease;  
+}
+.introductionNav-container h4{
+    padding-left: 5px;
+    padding-top: 2px;
+    font-weight: 700;
+    font-size: 23px;
+    color: var(--text-color);
+}
+.introduction-container ul{
+    list-style-type: none;
+}
+
 
 /* 难度设置 */
 .popup-difficulty{
@@ -499,6 +648,70 @@ header{
     transform: translate(-50%, -50%) scale(1); 
     opacity: 0.95;  
     transition: transform 0.4s ease, opacity 0.4s ease;  
+}
+.skin-container{
+    position: absolute;
+    width: 180px;
+    height: 70px;
+    left: 5%;
+    border-radius: 10px;
+}
+#Gold{
+    top: 2%;
+    background-color: #faf8ef;
+}
+#Blue{
+    top: 21.5%;
+    background-color: #ddf7f5;
+}
+#Pink{
+    top: 41%;
+    background-color: #f5ddf7;
+}
+#Macaroon{
+    top: 61%;
+    background-color: #caffd9;
+}
+#Cyber{
+    top: 80.5%;
+    background-color: rgb(152, 152, 152);
+}
+.skinBtn{
+    position: absolute;
+    outline: none;
+    padding: 10px 22px;
+    top: 13%;
+    left: 40%;
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 8px var(--shadow);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    text-shadow: 2px 2px 4px var(--shadow);
+}
+.skinBtn:active{
+    scale: 0.92;
+}
+#goldBtn{
+    background-color: #f59563;
+}
+#blueBtn{
+    background-color: #0a86bf;
+}
+#pinkBtn{
+    background-color: #cf35a6;
+}
+#macaroonBtn{
+    background-color: #c8abf0;
+}
+#cyberBtn{
+    background-color: #000;
 }
 
 

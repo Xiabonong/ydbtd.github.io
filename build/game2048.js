@@ -207,8 +207,24 @@ document.addEventListener("DOMContentLoaded", function () {
                 // 更新数字
                 grid[i].innerText = board[i];
                 // 更新颜色
-                if (document.body.classList.contains("dark")) grid[i].style.backgroundColor = darkColor(board[i]);
-                else grid[i].style.backgroundColor = getColor(board[i]);
+                if (document.body.classList.contains("dark")) {
+                    grid[i].style.backgroundColor = darkColor(board[i]);
+                }
+                else if (document.body.classList.contains("gold")){
+                    grid[i].style.backgroundColor = goldColor(board[i]);
+                }
+                else if (document.body.classList.contains("blue")){
+                    grid[i].style.backgroundColor = blueColor(board[i]);
+                }
+                else if (document.body.classList.contains("pink")){
+                    grid[i].style.backgroundColor = pinkColor(board[i]);
+                }
+                else if (document.body.classList.contains("macaroon")){
+                    grid[i].style.backgroundColor = macaroonColor(board[i]);
+                }
+                else {
+                    grid[i].style.backgroundColor = getColor(board[i]);
+                }
                 // 更新字体
                 adjustFont(grid[i]);
             }
@@ -216,8 +232,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 // 清空数字
                 grid[i].innerText = "";
                 // 清空颜色
-                if (document.body.classList.contains("dark")) grid[i].style.backgroundColor = "#3a3b3c";
-                else grid[i].style.backgroundColor = "#dbe9ee";
+                if (document.body.classList.contains("dark")) grid[i].style.backgroundColor = "";
+                else grid[i].style.backgroundColor = "";
             }
         }
     }
@@ -228,27 +244,43 @@ document.addEventListener("DOMContentLoaded", function () {
         // console.log("mode: ", document.body.classList.contains("dark") ? "dark" : "light");
         updateBoard();
     });
+    goldBtn.addEventListener("click", () => {
+        updateBoard();
+    });
+    blueBtn.addEventListener("click", () => {
+        updateBoard();
+    });
+    pinkBtn.addEventListener("click", () => {
+        updateBoard();
+    });
+    macaroonBtn.addEventListener("click", () => {
+        updateBoard();
+    });
+    cyberBtn.addEventListener("click", () => {
+        updateBoard();
+    });
+
 
     // 原版
     function getColor(num) {
         switch (num) {
-            case 2: return "#92f4f3";    // 淡灰色faf8ef
-            case 4: return "#00dcf4";    // 淡棕色ede0c8
-            case 8: return "#00a7f5";    // 橙色f2b179
-            case 16: return "#73a0fd";   // 橙红色f59563
-            case 32: return "#0079e2";   // 橙红色f67c5f
-            case 64: return "#2f5093";   // 红色f65e3b
-            case 128: return "#0442e5";  // 黄色edcf72
-            case 256: return "#6155db";  // 黄色edcc61
-            case 512: return "#9e5ede";  // 黄色edc850
-            case 1024: return "#8d54d2"; // 黄色edc53f
-            case 2048: return "#931adf"; // 金色edc22e
-            case 4096: return "#d4a017"; // 深金色d4a017
+            case 2: return "#92f4f3";   
+            case 4: return "#00dcf4";    
+            case 8: return "#00a7f5";    
+            case 16: return "#73a0fd";   
+            case 32: return "#0079e2";   
+            case 64: return "#2f5093";   
+            case 128: return "#0442e5";  
+            case 256: return "#6155db";  
+            case 512: return "#9e5ede";  
+            case 1024: return "#8d54d2";
+            case 2048: return "#931adf"; 
+            case 4096: return "#d4a017"; 
         }
         return "#000";               
     }
 
-    // 深色版
+    // 夜来香
     function darkColor(num) {
         switch (num) {
             case 2: return "#333333";
@@ -268,6 +300,85 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // 更新其他颜色
+    // 暮土金
+    function goldColor(num) {
+        switch (num) {
+            case 2: return "#dad8cf";
+            case 4: return "#ede0c8";
+            case 8: return "#f2b179";
+            case 16: return "#f59563";
+            case 32: return "#f67c5f";
+            case 64: return "#f65e3b";
+            case 128: return "#edcf72";
+            case 256: return "#edcc61";
+            case 512: return "#edc850";
+            case 1024: return "#edc53f";
+            case 2048: return "#edc22e";
+            case 4096: return "#d4a017";
+        }
+        return "#b87430";
+    }
+
+    // 海湾蓝
+    function blueColor(num) {
+        switch (num) {
+            case 2: return "#92f4f3";   
+            case 4: return "#00dcf4";    
+            case 8: return "#00a7f5";    
+            case 16: return "#73a0fd";   
+            case 32: return "#0079e2";   
+            case 64: return "#2f5093";   
+            case 128: return "#0442e5";  
+            case 256: return "#6155db";  
+            case 512: return "#9e5ede";  
+            case 1024: return "#8d54d2";
+            case 2048: return "#931adf"; 
+            case 4096: return "#d4a017"; 
+        }
+        return "#000";               
+    }
+
+    // 梦幻粉
+    function pinkColor(num) {
+        switch (num) {
+            case 2: return "#ffd1d9";
+            case 4: return "#ffb0b0";
+            case 8: return "#ffa0a0";
+            case 16: return "#ff9090";
+            case 32: return "#f0bbd9";
+            case 64: return "#f48fb1";
+            case 128: return "#f06292";
+            case 256: return "#ec407a";
+            case 512: return "#e91e63";
+            case 1024: return "#c2185b";
+            case 2048: return "#990e4f";
+            case 4096: return "#770e4f";
+        }
+        return "#541029";
+    }
+
+    // 马卡龙
+    function macaroonColor(num) {
+        switch (num) {
+            case 2: return "#f1f1b8";    
+            case 4: return "#ffe647";    
+            case 8: return "#f0b735";    
+            case 16: return "#df7a30";   
+            case 32: return "#e26538";   
+            case 64: return "#b8f1ed";   
+            case 128: return "#87CEFA";  
+            case 256: return "#00BFFF";  
+            case 512: return "#b8f1cc";  
+            case 1024: return "#ddff95"; 
+            case 2048: return "#b8d38f"; 
+            case 4096: return "#2E8B57"; 
+        }
+        return "#cb7799";
+    }
+
+    // 赛博风
+
+
     function getColor1(num) {
         const colors = {
             2: "#FCE8E6",
@@ -536,8 +647,21 @@ document.addEventListener("DOMContentLoaded", function () {
         // 获取需要建立动画的移动格
         const fromGrid = grid[from];
         // 更换颜色
-        if (document.body.classList.contains("dark")) fromGrid.style.backgroundColor = darkColor(val);
-        else fromGrid.style.backgroundColor = getColor(val);
+        if (document.body.classList.contains("dark")) {
+            fromGrid.style.backgroundColor = darkColor(val);
+        }
+        else if(document.body.classList.contains("gold")) {
+            fromGrid.style.backgroundColor = goldColor(val);
+        }
+        else if(document.body.classList.contains("blue")) {
+            fromGrid.style.backgroundColor = blueColor(val);
+        }
+        else if(document.body.classList.contains("pink")) {
+            fromGrid.style.backgroundColor = pinkColor(val);
+        }
+        else {
+            fromGrid.style.backgroundColor = getColor(val);
+        }
 
         // 设置移动距离
         let animateDis = dis * 100;
@@ -653,79 +777,117 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         if (dir !== null) game2048();
     });
-    let startX, startY; // 开始触摸或点击的坐标
-    let isTouching = false, isSwipeModeEnabled; // 标记是否正在触摸或点击
-
-    // 为按钮添加点击事件监听器来切换滑动模式
+    
+    let isSwipeModeEnabled = false;
     document.getElementById('toggleSwipeMode').addEventListener('click', function () {
-        const body = document.body;
         isSwipeModeEnabled = !isSwipeModeEnabled; // 切换滑动模式的状态
-        this.textContent = isSwipeModeEnabled ? "禁用滑动模式" : "启动滑动模式"; // 更新按钮文本
+        // 更新按钮的文本和样式
+        this.textContent = isSwipeModeEnabled ? "禁用滑动模式" : "启动滑动模式";
         this.style.backgroundColor = isSwipeModeEnabled ? "gray" : "";
         this.style.color = isSwipeModeEnabled ? "white" : "";
 
         if (isSwipeModeEnabled) {
-            // 新增类禁止滚动和文本选择
-            body.classList.add('no-scroll');
-            document.addEventListener('mousedown', pDB, false);
+            // 在启用滑动模式时添加监听器
+            document.addEventListener('touchmove', handleTouchMove, { passive: false });
+            document.addEventListener("touchstart", handleTouchStart, false);
+            document.addEventListener("touchend", handleTouchEnd, false);
+            document.addEventListener("mousedown", handleMouseDown, false);
+            document.addEventListener("mouseup", handleMouseUp, false);
         } else {
-            // 移除类来恢复滚动和文本选择
-            body.classList.remove('no-scroll');
-            document.removeEventListener('mousedown', pDB, false);
+            // 在禁用滑动模式时移除监听器
+            document.removeEventListener('touchmove', handleTouchMove, { passive: false });
+            document.removeEventListener("touchstart", handleTouchStart, false);
+            document.removeEventListener("touchend", handleTouchEnd, false);
+            document.removeEventListener("mousedown", handleMouseDown, false);
+            document.removeEventListener("mouseup", handleMouseUp, false);
         }
     });
 
+    function handleTouchMove(e) {
+        if (window.scrollY <= 50 || window.scrollX <= 50) e.preventDefault();
+        // 获取视口宽度
+        const viewportWidth = window.innerWidth;
+        // 获取页面总宽度
+        const totalWidth = document.documentElement.scrollWidth;
+        // 计算当前滚动位置加上视口宽度，得到的是当前视口右边缘相对于页面左边缘的位置
+        const currentRightPosition = window.scrollX + viewportWidth;
 
-    function pDB(e) {
-        // 阻止默认行为，包括文本选择和其他可能的行为
-        e.preventDefault();
+        // 如果当前右边缘位置接近页面总宽度（即接近右边界），阻止滑动
+        // 这里的阈值（如50px）可以根据需要调整
+        if (totalWidth - currentRightPosition <= 50) e.preventDefault();
     }
 
-    // 触摸开始或鼠标按下
-    function handleStart(event) {
-        // 如果没有启用滑动模式，则不执行
-        if (!isSwipeModeEnabled) return;
-        isTouching = true;
-        // 兼容触摸事件和鼠标事件
-        const touch = event.touches ? event.touches[0] : event;
-        startX = touch.clientX;
-        startY = touch.clientY;
+    // 触摸开始时的坐标
+    let touchStartX = 0, touchStartY = 0;
+
+    // 定义处理滑动开始和结束的函数
+    function handleTouchStart(e) {
+        touchStartX = e.touches[0].clientX, touchStartY = e.touches[0].clientY;
     }
 
-    // 触摸结束或鼠标释放
-    function handleEnd(event) {
-        if (!isTouching || !isSwipeModeEnabled) return; // 如果没有开始触摸或点击，则不执行
-        isTouching = false;
+    function handleTouchEnd(e) {
+        const touchEndX = e.changedTouches[0].clientX, touchEndY = e.changedTouches[0].clientY;
+        const dx = touchEndX - touchStartX, dy = touchEndY - touchStartY;
 
-        // 兼容触摸事件和鼠标事件
-        const touch = event.changedTouches ? event.changedTouches[0] : event;
-        const moveEndX = touch.clientX;
-        const moveEndY = touch.clientY;
-        const X = moveEndX - startX;
-        const Y = moveEndY - startY;
+        dir = null;
+        let minDis = 50; // 最小滑动距离
+        if (Math.abs(dx) > minDis || Math.abs(dy) > minDis) {
+            if (Math.abs(dx) > Math.abs(dy)) {
+                // 水平滑动
+                if (dx > 0) dir = "right";
+                else dir = "left";
+            } else {
+                // 垂直滑动
+                if (dy > 0) dir = "down";
+                else dir = "up";
+            }
+        } else return;
 
-        if (!gameStarted || isAnimating) return;
+        // 检查游戏是否开始 或 动画是否结束
+        if (!gameStarted || isAnimating || dir === null) return;
+
+        // 保存上一步面板
+        preBoard = [...board];
+        // 用于确保动画只播放一次
         upd = false;
 
-        const MIN_DISTANCE = 10; // 设置最小滑动距离
-        if (Math.abs(X) > Math.abs(Y) && Math.abs(X) > MIN_DISTANCE) {
-            // 判断左右滑动
-            if (X > 0) dir = "right";
-            else dir = "left";
-        } else if (Math.abs(Y) > Math.abs(X) && Math.abs(Y) > MIN_DISTANCE) {
-            // 判断上下滑动
-            if (Y > 0) dir = "down";
-            else dir = "up";
-        }
-        if(dir !== null) game2048();
+        game2048();
     }
 
-    // 添加触摸事件监听器
-    document.addEventListener('touchstart', handleStart, false);
-    document.addEventListener('touchend', handleEnd, false);
+    // 电脑版
+    let mouseStartX = 0, mouseStartY = 0;
 
-    // 添加鼠标事件监听器
-    document.addEventListener('mousedown', handleStart, false);
-    document.addEventListener('mouseup', handleEnd, false);
+    function handleMouseDown(e) {
+        mouseStartX = e.clientX, mouseStartY = e.clientY;
+    }
+
+    function handleMouseUp(e) {
+        const mouseEndX = e.clientX, mouseEndY = e.clientY;
+        const dx = mouseEndX - mouseStartX, dy = mouseEndY - mouseStartY;
+
+        dir = null;
+        let minDis = 50; // 最小滑动距离
+        if (Math.abs(dx) > minDis || Math.abs(dy) > minDis) {
+            if (Math.abs(dx) > Math.abs(dy)) {
+                // 水平滑动
+                if (dx > 0) dir = "right";
+                else dir = "left";
+            } else {
+                // 垂直滑动
+                if (dy > 0) dir = "down";
+                else dir = "up";
+            }
+        } else return;
+
+        // 检查游戏是否开始 或 动画是否结束
+        if (!gameStarted || isAnimating || dir === null) return;
+
+        // 保存上一步面板
+        preBoard = [...board];
+        // 用于确保动画只播放一次
+        upd = false;
+
+        game2048();
+    }
 });
 

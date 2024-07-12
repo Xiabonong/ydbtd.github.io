@@ -167,7 +167,23 @@ const sidebarContent = `
                 </div>
 
                 <!-- 主题切换弹出层 -->
-                <div id="Pop-skin" class="popup-skin"> </div>
+                <div id="Pop-skin" class="popup-skin">
+                    <div id="Gold" class="skin-container">
+                        <button id="goldBtn" class="skinBtn">暮土金</button>
+                    </div>
+                    <div id="Blue" class="skin-container">
+                        <button id="blueBtn" class="skinBtn">海湾蓝</button>
+                    </div>
+                    <div id="Pink" class="skin-container">
+                        <button id="pinkBtn" class="skinBtn">梦幻粉</button>
+                    </div>
+                    <div id="Macaroon" class="skin-container">
+                        <button id="macaroonBtn" class="skinBtn">马卡龙</button>
+                    </div>
+                    <div id="Cyber" class="skin-container">
+                        <button id="cyberBtn" class="skinBtn">赛博风</button>
+                    </div>
+                </div>
 
                 <!-- 模式选择弹出层 -->
                 <div id="Pop-modeChoice" class="popup-modeChoice">
@@ -200,7 +216,63 @@ const sidebarContent = `
             </button>
         </div>
         <div class="introduction-container">
-
+            <a id="introductionNav" class="introductionNav">
+                <i class="iconfont icon-ListDotLine icon" id="iconIntroductionNav"></i>
+                <span id="introductionNavName">传送门</span>
+            </a>
+            <div id="introductionNav-container" class="introductionNav-container">
+                <ul>
+                    <li>
+                        <h4><a href="#target" style="text-decoration: none; color: #2d2d2d">游戏目标</a></h4>
+                    </li>
+                    <li>
+                        <h4><a href="#basic" style="text-decoration: none;  color: #2d2d2d">基本玩法</a></h4>
+                    </li>
+                    <li>
+                        <h4><a href="#rule" style="text-decoration: none;  color: #2d2d2d">游戏规则</a></h4>
+                    </li>
+                    <li>
+                        <h4><a href="#suggestion" style="text-decoration: none;  color: #2d2d2d">策略建议</a></h4>
+                    </li>
+                    <li>
+                        <h4><a href='#more' style="text-decoration: none;  color: #2d2d2d">更多</a></h4>
+                    </li>         
+                </ul>
+            </div>
+            <a name="target"><h2>游戏目标</h2></a>
+            <p>玩家的主要目标是在4x4的格子中通过合并相同的数字，最终合成数字<b>2048</b>。</p>
+            <a name="basic"><h2>基本玩法</h2></a>
+            <p>1.游戏开始时，棋盘内会随机出现两个数字，这些数字只能是<b>2</b>或<b>4</b>。</p>
+            <img src="image/introduction/basic.png" alt="Basic" class="introduction-img">
+            <p>2.玩家可以通过键盘的↑↓←→或wasd（或滑动屏幕，如果是在手机端的话），使棋盘内的数字发生位移或合并。</p>
+            <p>3.若玩家选择的方向上有<b>相同</b>的数字，则这些数字会合并成一个新的数字，该数字为原来两个数字之和。</p>
+            <p>4.每次<b>有效</b>移动后，棋盘的空位（无数字处）会随机出现一个数字，这个数字同样只能是2或4，出现2的概率为90%，出现4的概率为10%。</p>
+            <img src="image/introduction/example.gif" alt="Example" class="introduction-img">
+            <a name="rule"><h2>游戏规则</h2></a>
+            <p>1.玩家需要尽量将相同的数字合并在一起，以便形成更大的数字。</p>
+            <p>2.合并所得的所有新生成数字相加即为该步的有效得分。</p>
+            <p>3.玩家需要时刻注意保持棋盘的整洁，避免让棋盘被数字填满而无法进行有效移动，这会导致游戏失败。</p>
+            <img src="image/introduction/lose.png" alt="Lose" class="introduction-img">
+            <p>4.当棋盘上出现数字2048时，玩家即获得胜利，游戏结束。此时，玩家可以选择继续游戏以挑战更高的分数，或者重新开始一局新的游戏。</p>
+            <img src="image/introduction/win.png" alt="Win" class="introduction-img">
+            <a name="suggestion"><h2>策略建议</h2></a>
+            <p>1.在游戏初期，玩家可以随意按动按键（或滑动屏幕）以熟悉游戏规则和操作方法。</p>
+            <p>2.随着游戏的进行，玩家需要更加注意数字的布局和合并顺序，以便更有效地合成更大的数字。</p>
+            <p>3.一般来说，将最大的数字放在角落是一个不错的策略，因为这样可以减少该数字被其他数字阻挡的可能性。</p>
+            <p>4.玩家还应该尽量保持数字的连续性，避免在棋盘上留下过多的空格，这样可以增加合成新数字的机会。</p>
+            <p>5.在游戏后期，当棋盘上出现较大的数字时，玩家需要更加谨慎地操作，以免破坏已经形成的良好布局。</p>
+            <a name="more"><h2>更多</h2></a>
+            <h3>模式选择</h3>
+            <p>我们可以启动一种流畅的滑动模式，该模式允许我们通过简单直观的上、下、左、右滑动动作，控制滑块的移动，实现对界面元素的精准操控与自由移动。 让每一次滑动都成为探索与互动的愉悦旅程。</p>
+            <h3>排行榜</h3>
+            <p>排行榜将精心记录着每一位玩家的卓越成就，以他们所取得的最高分数作为衡量标准，精准地排列出荣誉的阶梯。 这不仅仅是一个简单的数字排名，更是每位玩家智慧、技巧与不懈努力的辉煌见证。</p>
+            <h3>成就</h3>
+            <p>游戏含有丰富的成就系统，还有<b>隐藏成就</b>等你发现</p>
+            <h3>主题选择</h3>
+            <p>游戏提供多种主题供玩家选择，通过左下角按钮可快速切换<b>夜间模式</b></p>
+            <img src="image/introduction/darkmode.png" alt="DarkMode" class="introduction-img">
+            <h3>意见反馈</h3>
+            <p>我们非常珍视每一位用户的宝贵意见与建议，它们是我们不断优化与进步的源动力 。因此，我们诚挚地邀请您，在特设的“<b>意见建议</b>”模块中，畅所欲言，分享您的真知灼见。 无论是对我们产品功能的改进建议、服务体验的提升想法，还是任何能够助力我们更加贴近您需求的创意点子， 我们都将满怀感激地倾听并认真考虑。 再次感谢您的关注与支持。<p>
         </div>
     </div>
     <!-- 意见建议弹出层 -->
@@ -407,6 +479,7 @@ document.addEventListener('DOMContentLoaded', () => {
     closePopup();
     buttonEffect();
     showRanking();
+    showIntroductionNav();
     volumeSync();
 });
 
@@ -418,6 +491,12 @@ function initUI() {
         modeSwitch = body.querySelector(".toggle-switch"),
         modeText = body.querySelector(".mode-text"),
         toggle = body.querySelector('.toggle');
+        goldBtn = body.querySelector('#goldBtn');
+        blueBtn = body.querySelector('#blueBtn');
+        pinkBtn = body.querySelector('#pinkBtn');
+        macaroonBtn = body.querySelector('#macaroonBtn');
+        cyberBtn = body.querySelector('#cyberBtn');
+
         shellBtns = body.querySelectorAll('.shellBtn');
 
     // 切换侧边栏
@@ -442,10 +521,92 @@ function initUI() {
 
     // 切换模式
     modeSwitch.addEventListener("click", () => {
+        body.classList.remove("gold");
+        body.classList.remove("blue");
+        body.classList.remove("pink");
+        body.classList.remove("macaroon");
+        body.classList.remove("cyber");
         body.classList.toggle("dark");
 
-        if (body.classList.contains("dark")) modeText.innerText = "白日模式";
-        else modeText.innerText = "夜间模式";
+        if (body.classList.contains("dark")){
+            modeText.innerText = "白日模式";
+        } 
+        else {
+            modeText.innerText = "夜间模式";
+        }
+        
+    });
+    goldBtn.addEventListener("click", () => {
+        if(body.classList.contains("dark")){
+            body.classList.toggle("dark");
+            body.classList.add("gold");
+            body.classList.remove("blue");
+            body.classList.remove("pink");
+            body.classList.remove("macaroon");
+            body.classList.remove("cyber");
+        }
+        else{
+            body.classList.add("gold");
+            body.classList.remove("blue");
+            body.classList.remove("pink");
+            body.classList.remove("macaroon");
+            body.classList.remove("cyber");
+            body.classList.remove("dark");
+        }
+    });
+    blueBtn.addEventListener("click", () => {
+        if(body.classList.contains("dark")){
+            body.classList.toggle("dark");
+            body.classList.add("blue");
+            body.classList.remove("gold");
+            body.classList.remove("pink");
+            body.classList.remove("macaroon");
+            body.classList.remove("cyber");
+        }
+        else{
+            body.classList.add("blue");
+            body.classList.remove("gold");
+            body.classList.remove("pink");
+            body.classList.remove("macaroon");
+            body.classList.remove("cyber");
+            body.classList.remove("dark");
+        }
+    });
+    pinkBtn.addEventListener("click", () => {
+        if(body.classList.contains("dark")){
+            body.classList.toggle("dark");
+            body.classList.add("pink");
+            body.classList.remove("gold");
+            body.classList.remove("blue");
+            body.classList.remove("macaroon");
+            body.classList.remove("cyber");
+        }
+        else{
+            body.classList.add("pink");
+            body.classList.remove("gold");
+            body.classList.remove("blue");
+            body.classList.remove("macaroon");
+            body.classList.remove("cyber");
+            body.classList.remove("dark");
+        }
+    });
+    macaroonBtn.addEventListener("click", () => {
+        if(body.classList.contains("dark")){
+            body.classList.toggle("dark");
+            body.classList.add("macaroon");
+            body.classList.remove("gold");
+            body.classList.remove("blue");
+            body.classList.remove("pink");
+            body.classList.remove("cyber");
+        }
+        else{
+            body.classList.add("macaroon");
+            body.classList.remove("gold");
+            body.classList.remove("blue");
+            body.classList.remove("pink");
+            body.classList.remove("cyber");
+            body.classList.remove("dark");
+        }
     });
 }
 
@@ -644,6 +805,15 @@ function showRanking() {
         event.preventDefault(); // 阻止链接的默认行为  
         if (rankingBtn.classList.contains('active')) rankingBtn.classList.remove('active');
             else rankingBtn.classList.add('active');
+    });
+}
+
+function showIntroductionNav() {
+    document.getElementById('introductionNav').addEventListener('click', function (event) {
+        var introductionNav = document.getElementById('introductionNav-container');
+        event.preventDefault(); // 阻止链接的默认行为  
+        if (introductionNav.classList.contains('active')) introductionNav.classList.remove('active');
+            else introductionNav.classList.add('active');
     });
 }
 
