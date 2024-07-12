@@ -222,6 +222,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 else if (document.body.classList.contains("macaroon")){
                     grid[i].style.backgroundColor = macaroonColor(board[i]);
                 }
+                else if (document.body.classList.contains("cyber")){
+                    grid[i].style.backgroundColor = cyberColor(board[i]);
+                }
                 else {
                     grid[i].style.backgroundColor = getColor(board[i]);
                 }
@@ -377,7 +380,23 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // 赛博风
-
+    function cyberColor(num) {
+        switch (num) {
+            case 2: return "#00ffcc";     // 亮绿色
+            case 4: return "#00ccff";     // 亮蓝色
+            case 8: return "#ff00cc";     // 亮粉色
+            case 16: return "#ff6600";    // 亮橙色
+            case 32: return "#ffff00";    // 亮黄色
+            case 64: return "#ff33cc";    // 亮紫色
+            case 128: return "#00ffff";   // 亮青色
+            case 256: return "#ff9900";   // 亮橙色
+            case 512: return "#33cc33";   // 亮绿色
+            case 1024: return "#cc00cc";  // 亮紫色
+            case 2048: return "#ffcc00";  // 亮黄色
+            case 4096: return "#0099cc";  // 亮蓝色
+        }
+        return "#cb7799";     // 默认颜色
+    }
 
     function getColor1(num) {
         const colors = {
@@ -658,6 +677,12 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         else if(document.body.classList.contains("pink")) {
             fromGrid.style.backgroundColor = pinkColor(val);
+        }
+        else if(document.body.classList.contains("macaroon")) {
+            fromGrid.style.backgroundColor = macaroonColor(val);
+        }
+        else if(document.body.classList.contains("cyber")) {
+            fromGrid.style.backgroundColor = cyberColor(val);
         }
         else {
             fromGrid.style.backgroundColor = getColor(val);

@@ -496,7 +496,6 @@ function initUI() {
         pinkBtn = body.querySelector('#pinkBtn');
         macaroonBtn = body.querySelector('#macaroonBtn');
         cyberBtn = body.querySelector('#cyberBtn');
-
         shellBtns = body.querySelectorAll('.shellBtn');
 
     // 切换侧边栏
@@ -519,6 +518,7 @@ function initUI() {
         }); 
     });
 
+    let recordBodyClass = "";  
     // 切换模式
     modeSwitch.addEventListener("click", () => {
         body.classList.remove("gold");
@@ -527,16 +527,17 @@ function initUI() {
         body.classList.remove("macaroon");
         body.classList.remove("cyber");
         body.classList.toggle("dark");
-
         if (body.classList.contains("dark")){
             modeText.innerText = "白日模式";
         } 
         else {
             modeText.innerText = "夜间模式";
+            body.classList.add(recordBodyClass);
         }
         
     });
     goldBtn.addEventListener("click", () => {
+        recordBodyClass = 'gold';
         if(body.classList.contains("dark")){
             body.classList.toggle("dark");
             body.classList.add("gold");
@@ -555,6 +556,7 @@ function initUI() {
         }
     });
     blueBtn.addEventListener("click", () => {
+        recordBodyClass = 'blue';
         if(body.classList.contains("dark")){
             body.classList.toggle("dark");
             body.classList.add("blue");
@@ -573,6 +575,7 @@ function initUI() {
         }
     });
     pinkBtn.addEventListener("click", () => {
+        recordBodyClass = 'pink';
         if(body.classList.contains("dark")){
             body.classList.toggle("dark");
             body.classList.add("pink");
@@ -591,6 +594,7 @@ function initUI() {
         }
     });
     macaroonBtn.addEventListener("click", () => {
+        recordBodyClass = 'macaroon';
         if(body.classList.contains("dark")){
             body.classList.toggle("dark");
             body.classList.add("macaroon");
@@ -605,6 +609,25 @@ function initUI() {
             body.classList.remove("blue");
             body.classList.remove("pink");
             body.classList.remove("cyber");
+            body.classList.remove("dark");
+        }
+    });
+    cyberBtn.addEventListener("click", () => {
+        recordBodyClass = 'cyber';
+        if(body.classList.contains("dark")){
+            body.classList.toggle("dark");
+            body.classList.add("cyber");
+            body.classList.remove("gold");
+            body.classList.remove("blue");
+            body.classList.remove("pink");
+            body.classList.remove("macaroon");
+        }
+        else{
+            body.classList.add("cyber");
+            body.classList.remove("gold");
+            body.classList.remove("blue");
+            body.classList.remove("pink");
+            body.classList.remove("macaroon");
             body.classList.remove("dark");
         }
     });

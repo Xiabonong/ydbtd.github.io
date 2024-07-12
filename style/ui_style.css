@@ -126,11 +126,30 @@ body{
     --grid-bg-color: #e9b8f1;
     --startGameBtn-color: #5677e4;
     --grid-shadow: #000;
-    --rank-sp: #BFFBFF; 
+    --rank-sp: #bdb2f9; 
     --introduction-bg-color: #edefff;
 }
 /* 赛博风 */
-
+.cyber{
+    background-image: url("../image/cyber.jpg"); /* 赛博风格背景图片 */  
+    background-size: cover; /* 覆盖整个页面 */ 
+    --body-color: #000000; 
+    --shell-color: #2d2c2c; 
+    --primary-color: #00ffcc; 
+    --primary-color-light: #afb100; 
+    --toggle-color: #ddd; 
+    --text-color: #ffffff;
+    --popbackground: #330066; 
+    --shadow: #000000; 
+    --memberTextName-color: #ffffff;
+    --memberTextNum-color: #ffffff;
+    --grid-color: #00ffff; 
+    --grid-bg-color: #330099; 
+    --startGameBtn-color: #ff6600; 
+    --grid-shadow: #000000; 
+    --rank-sp: #2e8200; 
+    --introduction-bg-color: #000033;
+}
 
 /* 侧边栏 */
 .shell{
@@ -693,7 +712,7 @@ header{
     box-shadow: 0 2px 8px var(--shadow);
     cursor: pointer;
     transition: transform 0.2s ease;
-    text-shadow: 2px 2px 4px var(--shadow);
+    text-shadow: 2px 2px 4px #000;
 }
 .skinBtn:active{
     scale: 0.92;
