@@ -326,8 +326,8 @@ document.addEventListener("DOMContentLoaded", function () {
         anime.remove(grid);
         for (let i = 0; i < grid.length; i++) grid[i].style.transform = "scale(1)";
         for (let i = 0; i < grid.length; i++) if (board[i]) jumpAnimate(grid[i]);
-        // Q弹音效（同步播放）（待做）
-        // playSound();
+        // Q弹音效（同步播放）
+        playSound();
     }
 
     // Q弹动画

@@ -158,6 +158,7 @@ const sidebarContent = `
                         </div>
                         <div class="field">
                             <div class="value left">0</div>
+                            <audio id="pop" src="audio/pop.mp3" preload="auto"></audio>
                             <input type="range" id="act" class="volumeControl" value="10"></input>
                             <div class="value right">100</div>
                         </div>
@@ -191,9 +192,16 @@ const sidebarContent = `
 
     <!-- 玩法介绍弹出层 -->
     <div id="Pop-introduction" class="popup-introduction">
-        <button id="closeBtnIntroduction" class="closePopup">
-           <i class="iconfont icon-Close icon"></i>
-        </button>
+        <div id="Pop-introductionHeader">
+            <i class="iconfont icon-TargetArrow icon" id="iconIntroduction"></i>
+            <span id="textIntroduction">玩法介绍</span>
+            <button id="closeBtnIntroduction" class="closePopup">
+                <i class="iconfont icon-Close icon"></i>
+            </button>
+        </div>
+        <div class="introduction-container">
+
+        </div>
     </div>
     <!-- 意见建议弹出层 -->
     <div id="Pop-advice" class="popup-advice">
@@ -641,6 +649,10 @@ function showRanking() {
 
 // 音量显示
 function volumeSync() {
+    // 初始化音量
+    const pop = document.querySelector('#pop');
+    pop.volume = 0.1;
+
     // BGM音量显示同步
     const inputSliderBgm = document.querySelector('#bgm');
     const sliderValueBgm = document.querySelector('#sliderValueTextBgm');
@@ -662,18 +674,18 @@ function volumeSync() {
         sliderValueAct.textContent = value2;
         sliderValueAct.style.left = value2 / 2 + '%';
         sliderValueAct.classList.add('show');
+        pop.volume = act.value / 100;
     }
     inputSliderAct.onmouseleave = () => {
         sliderValueAct.classList.remove('show');
     }
 
     // 阻止方向键的默认行为  
-    document.querySelectorAll('.volumeControl').forEach(function(volumeControl) {  
-        volumeControl.addEventListener('keydown', function(event) {  
-            if (event.key === 'ArrowLeft' || event.key === 'ArrowRight' || event.key === 'ArrowUp' || event.key === 'ArrowDown') {  
-                event.preventDefault();  
-            } 
-        });  
+    document.querySelectorAll('.volumeControl').forEach(function (volumeControl) {
+        volumeControl.addEventListener('keydown', function (event) {
+            if (event.key === 'ArrowLeft' || event.key === 'ArrowRight' || event.key === 'ArrowUp' || event.key === 'ArrowDown') {
+                event.preventDefault();
+            }
+        });
     });
 }
-
