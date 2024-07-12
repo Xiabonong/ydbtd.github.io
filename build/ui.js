@@ -133,6 +133,44 @@ const sidebarContent = `
                         </a>
                     </li>
                 </ul>
+
+                <!-- 难度设置弹出层 -->
+                <div id="Pop-difficulty" class="popup-difficulty">
+                    
+                </div>
+
+                <!-- 音量控制弹出层 -->
+                <div id="Pop-volume" class="popup-volume">
+                    <div id="Bgm-container" class="volumeContainer">
+                        <div class="sliderValue">
+                            <span id="sliderValueTextBgm" class="sliderValueText">50</span>
+                        </div>
+                        <div class="field">
+                            <div class="value left">0</div>
+                            <input type="range" id="bgm" class="volumeControl"></input>
+                            <div class="value right">100</div>
+                        </div>
+                    </div>
+                    <div id="nameBgm">音乐</div>
+                    <div id="Act-container" class="volumeContainer">
+                        <div class="sliderValue">
+                            <span id="sliderValueTextAct" class="sliderValueText">50</span>
+                        </div>
+                        <div class="field">
+                            <div class="value left">0</div>
+                            <input type="range" id="act" class="volumeControl"></input>
+                            <div class="value right">100</div>
+                        </div>
+                    </div>  
+                    <div id="nameAct">音效</div>
+                </div>
+
+                <!-- 主题切换弹出层 -->
+                <div id="Pop-skin" class="popup-skin"> </div>
+                
+                <!-- 模式选择弹出层 -->
+                <div id="Pop-modeChoice" class="popup-modeChoice"> </div>
+
             </div>
             <div class="bottom-content">
                 <li class="mode">
@@ -152,49 +190,9 @@ const sidebarContent = `
     <!-- 玩法介绍弹出层 -->
     <div id="Pop-introduction" class="popup-introduction">
         <button id="closeBtnIntroduction" class="closePopup">
-            <i class="iconfont icon-Close icon"></i>
+           <i class="iconfont icon-Close icon"></i>
         </button>
     </div>
-
-    <!-- 难度设置弹出层 -->
-    <div id="Pop-difficulty" class="popup-difficulty">
-        
-    </div>
-
-    <!-- 音量控制弹出层 -->
-    <div id="Pop-volume" class="popup-volume">
-        <div id="Bgm-container" class="volumeContainer">
-            <div class="sliderValue">
-                <span id="sliderValueTextBgm" class="sliderValueText">50</span>
-            </div>
-            <div class="field">
-                <div class="value left">0</div>
-                <input type="range" id="bgm" class="volumeControl"></input>
-                <div class="value right">100</div>
-            </div>
-        </div>
-        <div id="Act-container" class="volumeContainer">
-            <div class="sliderValue">
-                <span id="sliderValueTextAct" class="sliderValueText">50</span>
-            </div>
-            <div class="field">
-                <div class="value left">0</div>
-                <input type="range" id="act" class="volumeControl"></input>
-                <div class="value right">100</div>
-            </div>
-        </div>  
-    </div>
-    
-    <!-- 主题切换弹出层 -->
-    <div id="Pop-skin" class="popup-skin">
-        
-    </div>
-
-    <!-- 模式选择弹出层 -->
-    <div id="Pop-modeChoice" class="popup-modeChoice">
-        
-    </div>
-
     <!-- 意见建议弹出层 -->
     <div id="Pop-advice" class="popup-advice">
         <i class="iconfont icon-NotebookPencil icon" id="iconAdvice"></i>

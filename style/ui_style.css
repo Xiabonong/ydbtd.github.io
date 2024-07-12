@@ -329,9 +329,9 @@ header{
 
 /* 难度设置 */
 .popup-difficulty{
-    position: fixed;  
+    position: absolute;  
     top: 37%;  
-    left: 23%;  
+    left: 173%;  
     border-radius: 18px;
     transform: translate(-100%, -100%) scale(0);  
     border: 1px solid black;  
@@ -352,9 +352,9 @@ header{
 
 /* 音量控制 */
 .popup-volume{
-    position: fixed;  
+    position: absolute;  
     top: 38%;  
-    left: 26%;  
+    left: 195%;  
     border-radius: 18px;
     transform: translate(-100%, -100%) scale(0);  
     border: 1px solid black;  
@@ -400,6 +400,7 @@ header{
     height: 45px;
     width: 45px;
     transform: translateX(-70%) scale(0);
+    opacity: 0;
     font-weight: 600;
     top: -40px;
     line-height: 55px;
@@ -407,10 +408,12 @@ header{
     color: #f4f4f4;
     transform-origin: bottom;
     text-shadow: 2px 2px 4px #000;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease;
 }
 .sliderValue span.show{
-    transform: translate(-70%) scale(1);
+    opacity: 1;
+    transform: translateX(-70%) scale(1);
+    transition: transform 0.3s ease;
 }
 .sliderValue span::after{
     position: absolute;
@@ -457,17 +460,38 @@ header{
     z-index: 200;
     cursor: pointer;
 }
-
-
-
+#nameBgm{
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    top: 7%;
+    line-height: 70px;
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--text-color);
+    text-shadow: 1px 1px 2px #898989;
+}
+#nameAct{
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    bottom: 11%;
+    line-height: 70px;
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--text-color);
+    text-shadow: 1px 1px 2px #898989;
+}
 
 
 
 /* 主题切换 */
 .popup-skin{
-    position: fixed;  
+    position: absolute;  
     top: 57.7%;  
-    left: 20%;  
+    left: 150%;  
     border-radius: 18px;
     transform: translate(-100%, -100%) scale(0);  
     border: 1px solid black;  
@@ -488,9 +512,9 @@ header{
 
 /* 模式选择 */
 .popup-modeChoice{
-    position: fixed;  
-    top: 49%;  
-    left: 20%;  
+    position: absolute;  
+    top: 51%;  
+    left: 150%;  
     border-radius: 18px;
     transform: translate(-100%, -100%) scale(0);  
     border: 1px solid black;  
