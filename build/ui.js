@@ -63,16 +63,31 @@ const sidebarContent = `
         </div>
 
         <!-- 水印 -->
-        <div id="tips">按Alt+T重置面板(最佳分数、排行榜)</div>
+        <div id="tips">按Alt+T重置面板(分数、排行榜、成就)</div>
+
+        <!-- 音乐播放器 -->
+        <div class="audio-container">
+            <audio id="audioPlayer" src="audio/luvLetter.mp3" type="audio/mp3"></audio>
+            <img src="image/album/luvletter.jpg" alt="luvLetter" id="playBtn">
+            <button id="toggle-playlist">
+                <i class="iconfont icon-ListDotLine icon" id="iconPlayList"></i>
+            </button>  
+        </div>
+        <div id="playlist" class="hidden">  
+            <ul>  
+                <li data-src="audio/luvLetter.mp3" data-img="image/album/luvletter.jpg">Luv Letter</li>  
+                <li data-src="audio/flowerDance.mp3" data-img="image/album/flowerdance.jpg">Flower Dance</li>  
+                <li data-src="audio/summer.mp3" data-img="image/album/summer.jpg">Summer</li>  
+                <!-- 更多歌曲 -->  
+            </ul>  
+        </div>  
 
     </div>
     <nav class="shell close"> <!-- 侧边栏 -->
         <header>
             <div class="image-text">
                 <span class="image">
-                    <a href="index.html">
-                        <img src="image/logo.png" alt="2048">
-                    </a>
+                    <img src="image/logo.png" id="logo" alt="2048">
                 </span>
                 <div class="image logo-text">
                     <span class="text name">2048</span>
@@ -90,12 +105,7 @@ const sidebarContent = `
                             <span class="text nac-text">玩法介绍</span>
                         </a>
                     </li>
-                    <li class="nav-link">
-                        <a href="#" id="difficulty" class="shellBtn">
-                            <i class="iconfont icon-ClassSquare icon"></i>
-                            <span class="text nac-text">难度设置</span>
-                        </a>
-                    </li>
+
                     <li class="nav-link">
                         <a href="#" id="volume" class="shellBtn">
                             <i class="iconfont icon-Bell icon"></i>
@@ -134,32 +144,28 @@ const sidebarContent = `
                     </li>
                 </ul>
 
-                <!-- 难度设置弹出层 -->
-                <div id="Pop-difficulty" class="popup-difficulty">
-                    
-                </div>
-
                 <!-- 音量控制弹出层 -->
                 <div id="Pop-volume" class="popup-volume">
                     <div id="Bgm-container" class="volumeContainer">
                         <div class="sliderValue">
-                            <span id="sliderValueTextBgm" class="sliderValueText">10</span>
+                            <span id="sliderValueTextBgm" class="sliderValueText">30</span>
                         </div>
                         <div class="field">
                             <div class="value left">0</div>
-                            <input type="range" id="bgm" class="volumeControl" value="10"></input>
+                            <input type="range" id="bgm" class="volumeControl" value="30"></input>
                             <div class="value right">100</div>
                         </div>
                     </div>
                     <div id="nameBgm">音乐</div>
                     <div id="Act-container" class="volumeContainer">
                         <div class="sliderValue">
-                            <span id="sliderValueTextAct" class="sliderValueText">10</span>
+                            <span id="sliderValueTextAct" class="sliderValueText">30</span>
                         </div>
                         <div class="field">
                             <div class="value left">0</div>
                             <audio id="pop" src="audio/pop.mp3" preload="auto"></audio>
-                            <input type="range" id="act" class="volumeControl" value="10"></input>
+                            <audio id="acIS" src="audio/acIS.mp3" preload="auto"></audio>
+                            <input type="range" id="act" class="volumeControl" value="30"></input>
                             <div class="value right">100</div>
                         </div>
                     </div>  
@@ -304,31 +310,31 @@ const sidebarContent = `
             <img src="image/member/LYQ.jpg" alt="Long">
             <strong>龍毅翹</strong>
             <p>2307010131</p>
-            <i class="iconfont icon-UserHeart icon heart"></i>
+            <i class="iconfont icon-UserHeart icon heart" id="like1"></i>
         </div>
         <div class="XBN">
             <img src="image/member/XBN.jpg" alt="Xia">
             <strong>夏伯农</strong>
             <p>2307010420</p>
-            <i class="iconfont icon-UserHeart icon heart"></i>
+            <i class="iconfont icon-UserHeart icon heart" id="like2"></i>
         </div>
         <div class="LZH">
             <img src="image/member/LZH.jpg" alt="Liu">
             <strong>刘子菡</strong>
             <p>2307010113</p>
-            <i class="iconfont icon-UserHeart icon heart"></i>
+            <i class="iconfont icon-UserHeart icon heart" id="like3"></i>
         </div>
         <div class="WX">
             <img src="image/member/WX.jpg" alt="Wang">
             <strong>王檄</strong>
             <p>2307010215</p>
-            <i class="iconfont icon-UserHeart icon heart"></i>
+            <i class="iconfont icon-UserHeart icon heart" id="like4"></i>
         </div>
         <div class="NX">
             <img src="image/member/NX.jpg" alt="Niu">
             <strong>牛翔</strong>
             <p>2307010310</p>
-            <i class="iconfont icon-UserHeart icon heart"></i>
+            <i class="iconfont icon-UserHeart icon heart" id="like5"></i>
         </div>
         <button id="closeBtnProductionTeam" class="closePopup">
             <i class="iconfont icon-Close icon"></i>
@@ -350,95 +356,147 @@ const sidebarContent = `
                 <li class="achievement-item">  
                     <h3>梦开始的地方</h3>  
                     <p>这是什么？点一下</p>  
+                    <p id="ac1Content">达成条件：******</p>
                 </li>  
                 <li class="achievement-item">  
                     <h3>前面的可是地狱啊</h3>  
                     <p>现在你已经学会2+2=4了，接下来让我们翻开高等数学……</p>  
+                    <p id="ac2Content">达成条件：******</p>
                 </li>  
                 <li class="achievement-item">  
                     <h3>初出茅庐</h3>  
                     <p>孺子可教也</p>  
+                    <p id="ac3Content">达成条件：******</p>
                 </li>  
+                <li class="achievement-item">
+                    <h3>呜呜伯┭┮﹏┭┮</h3>
+                    <p>呜呜伯想让你加入呜呜邪教，你无奈的回复了一个“558”给他……</p>
+                    <p id="ac4Content">达成条件：******</p>
+                </li>
                 <li class="achievement-item">  
                     <h3>小试牛刀</h3>  
                     <p>你也喜欢这种丝滑合并的感觉吧？</p>  
+                    <p id="ac5Content">达成条件：******</p>
                 </li>  
+                <li class="achievement-item">
+                    <h3>炉火纯青</h3>
+                    <p>看到没，这就是手感！</p>
+                    <p id="ac6Content">达成条件：******</p>
+                </li>
+                <li class="achievement-item">
+                    <h3>独孤求败</h3>
+                    <p>你已经超越了大多数人，但是你还有很长的路要走</p>
+                    <p id="ac7Content">达成条件：******</p>
+                </li>
+                <li class="achievement-item">
+                    <h3>一代呜呜伯</h3>
+                    <p>糟糕…………玩上头了(￣▽￣)"</p>
+                    <p id="ac8Content">达成条件：******</p>
+                </li>
                 <li class="achievement-item">  
                     <h3>失败是成功他妈</h3>  
                     <p>这不会是最后一次…………吧？</p>  
+                    <p id="ac9Content">达成条件：******</p>
                 </li>  
                 <li class="achievement-item">  
                     <h3>键之力三段</h3>  
                     <p>三十年河东，三十年河西……</p>  
+                    <p id="ac10Content">达成条件：******</p>
                 </li>  
+                <li class="achievement-item">
+                    <h3>呜呜伯累了.(&#180A&#96&#42)</h3>
+                    <p>呜呜伯按不动了，呜呜呜……</p>
+                    <p id="ac11Content">达成条件：******</p>
                 <li class="achievement-item">  
                     <h3>大键师</h3>  
                     <p>去吧，佛生气键盘莲花！</p>  
+                    <p id="ac12Content">达成条件：******</p>
                 </li>  
                 <li class="achievement-item">  
                     <h3>键宗强者，恐怖如斯</h3>  
                     <p>三年之期已到……</p>  
+                    <p id="ac13Content">达成条件：******</p>
                 </li>  
                 <li class="achievement-item">  
                     <h3>键帝</h3>  
                     <p>你的键盘还好吗？</p>  
+                    <p id="ac14Content">达成条件：******</p>
                 </li>  
+                <li class="achievement-item">
+                    <h3>键神</h3>
+                    <p>你的键盘已经被你玩坏了！(╯° °)╯︵ ┻━┻</p>
+                    <p id="ac15Content">达成条件：******</p>
+                </li>
                 <li class="achievement-item">  
-                    <h3>终于等到你</h3>  
-                    <p>还好你没放弃</p>  
+                    <h3>呜呜，终于赢了</h3>  
+                    <p>呜呜呜呜呜呜，为什么2048不呜呜˶T⚰︎T˵</p>  
+                    <p id="ac16Content">达成条件：******</p>
                 </li>  
                 <li class="achievement-item">  
                     <h3>爱要大声说出来</h3>  
-                    <p>恨也是（第一次使用意见反馈）</p>  
+                    <p>恨也是（第一次使用意见反馈系统）</p>  
+                    <p id="ac17Content">达成条件：******</p>
                 </li>  
                 <li class="achievement-item">  
                     <h3>耳膜破坏者</h3>  
                     <p>你不会在外放吧？</p>  
+                    <p id="ac18Content">达成条件：******</p>
                 </li>  
                 <li class="achievement-item">  
                     <h3>盲生，你发现了华点</h3>  
                     <p>好奇心害死猫，但咱是人</p>  
+                    <p id="ac19Content">达成条件：******</p>
                 </li>  
                 <li class="achievement-item">  
                     <h3>虔诚</h3>  
-                    <p>你真的，我哭死</p>  
+                    <p>你是来看呜呜伯的吗……(・∀・(・∀・(・∀・*)</p>  
+                    <p id="ac20Content">达成条件：******</p>
                 </li>  
                 <li class="achievement-item">  
                     <h3>夜猫子</h3>  
                     <p>晚上更有感觉（确信）</p>  
+                    <p id="ac21Content">达成条件：******</p>
                 </li>  
                 <li class="achievement-item">  
                     <h3>名人</h3>  
-                    <p>大佬给签个名~</p>  
+                    <p>呜呜伯请求大佬给签个名~</p>  
+                    <p id="ac22Content">达成条件：******</p>
                 </li>  
                 <li class="achievement-item">  
                     <h3>听我说蟹蟹你</h3>  
                     <p>因为有你，温暖了四季</p>  
+                    <p id="ac23Content">达成条件：******</p>
                 </li>  
                 <li class="achievement-item">  
                     <h3>建议见意见议建</h3>  
                     <p>咋的，你意见很大啊（心虚）</p>  
+                    <p id="ac24Content">达成条件：******</p>
                 </li>  
                 <!-- 隐藏成就 -->
                 <li class="achievement-item">  
                     <h3>闪电侠</h3>  
                     <p>不是哥们，搁着放鞭炮呢</p>  
+                    <p id="ac25Content">达成条件：******</p>
                 </li>  
                 <li class="achievement-item">  
                     <h3>熊孩子</h3>  
-                    <p>开关都给你玩坏了！</p>  
+                    <p>开关都要给你玩坏了！(╯▔皿▔)╯</p>  
+                    <p id="ac26Content">达成条件：******</p>
                 </li>  
                 <li class="achievement-item">  
                     <h3>思考者</h3>  
                     <p>醒醒，月亮都晒屁股了</p>  
+                    <p id="ac27Content">达成条件：******</p>
                 </li>  
                 <li class="achievement-item">  
                     <h3>无他，唯手熟尔</h3>  
                     <p>啊？？？</p>  
+                    <p id="ac28Content">达成条件：******</p>
                 </li>  
                 <li class="achievement-item">  
                     <h3>沉浸式小游戏</h3>  
                     <p>有这么好玩吗？（挠头）</p>  
+                    <p id="ac29Content">达成条件：******</p>
                 </li>  
             </ul>  
         </div>
@@ -465,9 +523,127 @@ const sidebarContent = `
     <!-- 游戏胜利弹出层     -->
     <div id="gameWinBoard" class="gameWinBoard">
         <span id="winText">恭喜你！你赢了！<br> 
-                           继续玩或者重开，任君选择吧~ <br> 
-                           (￣▽￣)ノ</span>
+                            继续玩或者重开，任君选择吧~ <br> 
+                            (￣▽￣)ノ</span>
         <span id="winTextTip">点击任意位置继续……</span>
+    </div>
+
+    <!-- 成就系统弹出层 -->
+    <div id="ac1" class="pop-acItem">
+        <h3>梦开始的地方</h3>  
+        <p>这是什么？点一下</p>  
+    </div>
+    <div id="ac2" class="pop-acItem">
+        <h3>前面的可是地狱啊</h3>  
+        <p>现在你已经学会2+2=4了，接下来让我们翻开高等数学……</p>  
+    </div>
+    <div id="ac3" class="pop-acItem">
+        <h3>初出茅庐</h3>  
+        <p>孺子可教也</p>  
+    </div>
+    <div id="ac4" class="pop-acItem">
+        <h3>呜呜伯┭┮﹏┭┮</h3>
+        <p>呜呜伯想让你加入呜呜邪教，你无奈的回复了一个“558”给他……</p>
+    </div>
+    <div id="ac5" class="pop-acItem">
+        <h3>小试牛刀</h3>  
+        <p>你也喜欢这种丝滑合并的感觉吧？</p>
+    </div>
+    <div id="ac6" class="pop-acItem">
+        <h3>炉火纯青</h3>
+       <p>看到没，这就是手感！</p>
+    </div>
+    <div id="ac7" class="pop-acItem">
+        <h3>独孤求败</h3>
+        <p>你已经超越了大多数人，但是你还有很长的路要走</p>
+    </div>
+    <div id="ac8" class="pop-acItem">
+        <h3>一代呜呜伯</h3>
+        <p>糟糕…………玩上头了(￣▽￣)"</p>
+    </div>
+    <div id="ac9" class="pop-acItem">
+        <h3>失败是成功他妈</h3>  
+        <p>这不会是最后一次…………吧？</p>  
+    </div>
+    <div id="ac10" class="pop-acItem">
+        <h3>键之力三段</h3>  
+        <p>三十年河东，三十年河西……</p>  
+    </div>
+    <div id="ac11" class="pop-acItem">
+        <h3>呜呜伯累了.(&#180A&#96&#42)</h3>
+        <p>呜呜伯按不动了，呜呜呜……</p>
+    </div>
+    <div id="ac12" class="pop-acItem">
+        <h3>大键师</h3>  
+        <p>去吧，佛生气键盘莲花！</p>  
+    </div>
+    <div id="ac13" class="pop-acItem">
+        <h3>键宗强者，恐怖如斯</h3>  
+        <p>三年之期已到……</p>  
+    </div>
+    <div id="ac14" class="pop-acItem">
+        <h3>键帝</h3>  
+        <p>你的键盘还好吗？</p>  
+    </div>
+    <div id="ac15" class="pop-acItem">
+        <h3>键神</h3>
+        <p>你的键盘已经被你玩坏了！<br>(╯° °)╯︵ ┻━┻</p>
+    </div>
+    <div id="ac16" class="pop-acItem">
+        <h3>呜呜，终于赢了</h3>  
+        <p>呜呜呜呜呜呜，为什么2048不呜呜˶T⚰︎T˵</p>  
+    </div>
+    <div id="ac17" class="pop-acItem">
+        <h3>爱要大声说出来</h3>  
+        <p>恨也是（第一次使用意见反馈系统）</p>  
+    </div>
+    <div id="ac18" class="pop-acItem">
+        <h3>耳膜破坏者</h3>  
+        <p>你不会在外放吧？</p>  
+    </div>
+    <div id="ac19" class="pop-acItem">
+        <h3>盲生，你发现了华点</h3>  
+        <p>好奇心害死猫，但咱是人</p>  
+    </div>
+    <div id="ac20" class="pop-acItem">
+        <h3>虔诚</h3>  
+        <p>你是来看呜呜伯的吗……(・∀・(・∀・(・∀・*)</p>  
+    </div>
+    <div id="ac21" class="pop-acItem">
+        <h3>夜猫子</h3>  
+        <p>晚上更有感觉（确信）</p>  
+    </div>
+    <div id="ac22" class="pop-acItem">
+        <h3>名人</h3>  
+        <p>呜呜伯请求大佬给签个名~</p>  
+    </div>
+    <div id="ac23" class="pop-acItem">
+        <h3>听我说蟹蟹你</h3>  
+        <p>因为有你，温暖了四季</p>  
+    </div>
+    <div id="ac24" class="pop-acItem">
+        <h3>建议见意见议建</h3>  
+        <p>咋的，你意见很大啊（心虚）</p>  
+    </div>
+    <div id="ac25" class="pop-acItem">
+        <h3>闪电侠</h3>  
+        <p>不是哥们，搁着放鞭炮呢</p>  
+    </div>
+    <div id="ac26" class="pop-acItem">
+        <h3>熊孩子</h3>  
+        <p>开关都要给你玩坏了！(╯▔皿▔)╯</p>  
+    </div>
+    <div id="ac27" class="pop-acItem">
+        <h3>思考者</h3>  
+        <p>醒醒，月亮都晒屁股了</p>  
+    </div>
+    <div id="ac28" class="pop-acItem">
+        <h3>无他，唯手熟尔</h3>  
+        <p>啊？？？</p>  
+    </div>
+    <div id="ac29" class="pop-acItem">
+        <h3>沉浸式小游戏</h3>  
+        <p>有这么好玩吗？（挠头）</p>  
     </div>
 `;
 
@@ -481,8 +657,8 @@ document.addEventListener('DOMContentLoaded', () => {
     showRanking();
     showIntroductionNav();
     volumeSync();
+    logoAchievement();
 });
-
 
 function initUI() {
     // 切换body元素的dark类
@@ -491,18 +667,24 @@ function initUI() {
         modeSwitch = body.querySelector(".toggle-switch"),
         modeText = body.querySelector(".mode-text"),
         toggle = body.querySelector('.toggle');
-        goldBtn = body.querySelector('#goldBtn');
-        blueBtn = body.querySelector('#blueBtn');
-        pinkBtn = body.querySelector('#pinkBtn');
-        macaroonBtn = body.querySelector('#macaroonBtn');
-        cyberBtn = body.querySelector('#cyberBtn');
-        shellBtns = body.querySelectorAll('.shellBtn');
+    goldBtn = body.querySelector('#goldBtn');
+    blueBtn = body.querySelector('#blueBtn');
+    pinkBtn = body.querySelector('#pinkBtn');
+    macaroonBtn = body.querySelector('#macaroonBtn');
+    cyberBtn = body.querySelector('#cyberBtn');
+    shellBtns = body.querySelectorAll('.shellBtn');
+
+    // 阻止方向键的默认行为  
+    body.addEventListener('keydown', function (event) {
+        if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+            event.preventDefault();
+        }
+    });
 
     // 切换侧边栏
     toggle.addEventListener("click", () => {
         shell.classList.toggle("close");
         document.getElementById('Pop-introduction').classList.remove('active');
-        document.getElementById('Pop-difficulty').classList.remove('active');
         document.getElementById('Pop-volume').classList.remove('active');
         document.getElementById('Pop-skin').classList.remove('active');
         document.getElementById('Pop-modeChoice').classList.remove('active');
@@ -510,15 +692,15 @@ function initUI() {
         document.getElementById('Pop-productionTeam').classList.remove('active');
         document.getElementById('Pop-achievement').classList.remove('active');
     });
-    shellBtns.forEach(shellBtn => {  
-        shellBtn.addEventListener("click", () => {  
-            if (shell.classList.contains('close')) {  
-                shell.classList.remove('close');  
-            }  
-        }); 
+    shellBtns.forEach(shellBtn => {
+        shellBtn.addEventListener("click", () => {
+            if (shell.classList.contains('close')) {
+                shell.classList.remove('close');
+            }
+        });
     });
 
-    let recordBodyClass = "";  
+    let recordBodyClass = "";
     // 切换模式
     modeSwitch.addEventListener("click", () => {
         body.classList.remove("gold");
@@ -527,18 +709,18 @@ function initUI() {
         body.classList.remove("macaroon");
         body.classList.remove("cyber");
         body.classList.toggle("dark");
-        if (body.classList.contains("dark")){
+        if (body.classList.contains("dark")) {
             modeText.innerText = "白日模式";
-        } 
+        }
         else {
             modeText.innerText = "夜间模式";
             body.classList.add(recordBodyClass);
         }
-        
+
     });
     goldBtn.addEventListener("click", () => {
         recordBodyClass = 'gold';
-        if(body.classList.contains("dark")){
+        if (body.classList.contains("dark")) {
             body.classList.toggle("dark");
             body.classList.add("gold");
             body.classList.remove("blue");
@@ -546,7 +728,7 @@ function initUI() {
             body.classList.remove("macaroon");
             body.classList.remove("cyber");
         }
-        else{
+        else {
             body.classList.add("gold");
             body.classList.remove("blue");
             body.classList.remove("pink");
@@ -557,7 +739,7 @@ function initUI() {
     });
     blueBtn.addEventListener("click", () => {
         recordBodyClass = 'blue';
-        if(body.classList.contains("dark")){
+        if (body.classList.contains("dark")) {
             body.classList.toggle("dark");
             body.classList.add("blue");
             body.classList.remove("gold");
@@ -565,7 +747,7 @@ function initUI() {
             body.classList.remove("macaroon");
             body.classList.remove("cyber");
         }
-        else{
+        else {
             body.classList.add("blue");
             body.classList.remove("gold");
             body.classList.remove("pink");
@@ -576,7 +758,7 @@ function initUI() {
     });
     pinkBtn.addEventListener("click", () => {
         recordBodyClass = 'pink';
-        if(body.classList.contains("dark")){
+        if (body.classList.contains("dark")) {
             body.classList.toggle("dark");
             body.classList.add("pink");
             body.classList.remove("gold");
@@ -584,7 +766,7 @@ function initUI() {
             body.classList.remove("macaroon");
             body.classList.remove("cyber");
         }
-        else{
+        else {
             body.classList.add("pink");
             body.classList.remove("gold");
             body.classList.remove("blue");
@@ -595,7 +777,7 @@ function initUI() {
     });
     macaroonBtn.addEventListener("click", () => {
         recordBodyClass = 'macaroon';
-        if(body.classList.contains("dark")){
+        if (body.classList.contains("dark")) {
             body.classList.toggle("dark");
             body.classList.add("macaroon");
             body.classList.remove("gold");
@@ -603,7 +785,7 @@ function initUI() {
             body.classList.remove("pink");
             body.classList.remove("cyber");
         }
-        else{
+        else {
             body.classList.add("macaroon");
             body.classList.remove("gold");
             body.classList.remove("blue");
@@ -614,7 +796,7 @@ function initUI() {
     });
     cyberBtn.addEventListener("click", () => {
         recordBodyClass = 'cyber';
-        if(body.classList.contains("dark")){
+        if (body.classList.contains("dark")) {
             body.classList.toggle("dark");
             body.classList.add("cyber");
             body.classList.remove("gold");
@@ -622,7 +804,7 @@ function initUI() {
             body.classList.remove("pink");
             body.classList.remove("macaroon");
         }
-        else{
+        else {
             body.classList.add("cyber");
             body.classList.remove("gold");
             body.classList.remove("blue");
@@ -648,7 +830,6 @@ function waterMark() {
 function closePopup() {
     // 弹出层（用于开启和关闭层）
     var popUp1 = document.getElementById('Pop-introduction');
-    var popUp2 = document.getElementById('Pop-difficulty');
     var popUp3 = document.getElementById('Pop-volume');
     var popUp4 = document.getElementById('Pop-skin');
     var popUp5 = document.getElementById('Pop-modeChoice');
@@ -661,21 +842,6 @@ function closePopup() {
         event.preventDefault();
         if (popUp1.classList.contains('active')) popUp1.classList.remove('active');
         else popUp1.classList.add('active');
-        popUp2.classList.remove('active');
-        popUp3.classList.remove('active');
-        popUp4.classList.remove('active');
-        popUp5.classList.remove('active');
-        popUp6.classList.remove('active');
-        popUp7.classList.remove('active');
-        popUp8.classList.remove('active');
-    });
-
-    // 难度设置（popUp2）
-    document.getElementById('difficulty').addEventListener('click', function (event) {
-        event.preventDefault();
-        if (popUp2.classList.contains('active')) popUp2.classList.remove('active');
-        else popUp2.classList.add('active');
-        popUp1.classList.remove('active');
         popUp3.classList.remove('active');
         popUp4.classList.remove('active');
         popUp5.classList.remove('active');
@@ -690,7 +856,6 @@ function closePopup() {
         if (popUp3.classList.contains('active')) popUp3.classList.remove('active');
         else popUp3.classList.add('active');
         popUp1.classList.remove('active');
-        popUp2.classList.remove('active'); 
         popUp4.classList.remove('active');
         popUp5.classList.remove('active');
         popUp6.classList.remove('active');
@@ -704,7 +869,6 @@ function closePopup() {
         if (popUp4.classList.contains('active')) popUp4.classList.remove('active');
         else popUp4.classList.add('active');
         popUp1.classList.remove('active');
-        popUp2.classList.remove('active'); 
         popUp3.classList.remove('active');
         popUp5.classList.remove('active');
         popUp6.classList.remove('active');
@@ -718,7 +882,6 @@ function closePopup() {
         if (popUp5.classList.contains('active')) popUp5.classList.remove('active');
         else popUp5.classList.add('active');
         popUp1.classList.remove('active');
-        popUp2.classList.remove('active'); 
         popUp3.classList.remove('active');
         popUp4.classList.remove('active');
         popUp6.classList.remove('active');
@@ -732,7 +895,6 @@ function closePopup() {
         if (popUp6.classList.contains('active')) popUp6.classList.remove('active');
         else popUp6.classList.add('active');
         popUp1.classList.remove('active');
-        popUp2.classList.remove('active'); 
         popUp3.classList.remove('active');
         popUp4.classList.remove('active');
         popUp5.classList.remove('active');
@@ -740,6 +902,7 @@ function closePopup() {
         popUp8.classList.remove('active');
     });
     document.getElementById('submitBtn').addEventListener('click', function (event) {
+        document.getElementById('submitBtn').classList.add('active');
         event.preventDefault();
         popUp6.classList.remove('active');
         document.getElementById('Pop-feedback').classList.add('active');
@@ -752,17 +915,16 @@ function closePopup() {
         if (popUp7.classList.contains('active')) popUp7.classList.remove('active');
         else popUp7.classList.add('active');
         popUp1.classList.remove('active');
-        popUp2.classList.remove('active'); 
         popUp3.classList.remove('active');
         popUp4.classList.remove('active');
         popUp5.classList.remove('active');
         popUp6.classList.remove('active');
         popUp8.classList.remove('active');
     });
-    document.querySelectorAll('.heart').forEach(function(heart) {  
-        heart.addEventListener('click', function() {  
-            this.classList.toggle('active');  
-        });  
+    document.querySelectorAll('.heart').forEach(function (heart) {
+        heart.addEventListener('click', function () {
+            this.classList.toggle('active');
+        });
     });
 
     // 成就（popUp8）
@@ -771,7 +933,6 @@ function closePopup() {
         if (popUp8.classList.contains('active')) popUp8.classList.remove('active');
         else popUp8.classList.add('active');
         popUp1.classList.remove('active');
-        popUp2.classList.remove('active'); 
         popUp3.classList.remove('active');
         popUp4.classList.remove('active');
         popUp5.classList.remove('active');
@@ -784,7 +945,6 @@ function closePopup() {
     for (var i = 0; i < closeButton.length; i++) {
         closeButton[i].addEventListener('click', function () {
             popUp1.classList.remove('active');
-            popUp2.classList.remove('active'); 
             popUp3.classList.remove('active');
             popUp4.classList.remove('active');
             popUp5.classList.remove('active');
@@ -797,7 +957,6 @@ function closePopup() {
 
     // 点击开始按钮关闭侧边弹出层
     document.getElementById('startGameButton').addEventListener('click', function (event) {
-        popUp2.classList.remove('active'); 
         popUp3.classList.remove('active');
         popUp4.classList.remove('active');
         popUp5.classList.remove('active');
@@ -810,14 +969,14 @@ function buttonEffect() {
     var isAnimating = false;
 
     sGB.addEventListener('click', function () {
-        if (!isAnimating) { 
+        if (!isAnimating) {
             isAnimating = true;
-            sGB.classList.add('animate'); 
+            sGB.classList.add('animate');
 
-            setTimeout(() => { 
-                sGB.classList.remove('animate'); 
-                isAnimating = false; 
-            }, 300); 
+            setTimeout(() => {
+                sGB.classList.remove('animate');
+                isAnimating = false;
+            }, 300);
         }
     });
 }
@@ -827,7 +986,7 @@ function showRanking() {
         var rankingBtn = document.getElementById('Ranking-Btn');
         event.preventDefault(); // 阻止链接的默认行为  
         if (rankingBtn.classList.contains('active')) rankingBtn.classList.remove('active');
-            else rankingBtn.classList.add('active');
+        else rankingBtn.classList.add('active');
     });
 }
 
@@ -836,15 +995,60 @@ function showIntroductionNav() {
         var introductionNav = document.getElementById('introductionNav-container');
         event.preventDefault(); // 阻止链接的默认行为  
         if (introductionNav.classList.contains('active')) introductionNav.classList.remove('active');
-            else introductionNav.classList.add('active');
+        else introductionNav.classList.add('active');
     });
 }
 
 // 音量显示
 function volumeSync() {
-    // 初始化音量
-    const pop = document.querySelector('#pop');
-    pop.volume = 0.1;
+    // 初始化音效（音量）
+    const pop = document.querySelector('#pop'), acIS = document.querySelector('#acIS');
+    pop.volume = 0.3, acIS.volume = 1;
+
+    // 初始化音乐（音量）
+    var audioPlayer = document.getElementById('audioPlayer');
+    audioPlayer.volume = 0.3
+    // 音乐播放器
+    let isPlaying = false;
+    document.getElementById('playBtn').addEventListener('click', function (event) {
+        if (isPlaying) {
+            audioPlayer.pause();
+            isPlaying = false;
+            document.getElementById('playBtn').classList.remove('playing');
+        } else {
+            audioPlayer.play();
+            isPlaying = true;
+            document.getElementById('playBtn').classList.add('playing');
+        }
+    });
+    // 音乐列表隐藏或显示
+    document.getElementById('toggle-playlist').addEventListener('click', function () {
+        const playlist = document.getElementById('playlist');
+        playlist.classList.toggle('visible');
+    });
+    // 更新音乐及专辑图册，同时重置旋转
+    document.getElementById('playlist').addEventListener('click', function (event) {
+        if (event.target.tagName === 'LI') {
+            const audioPlayer = document.getElementById('audioPlayer');
+            const albumArt = document.getElementById('playBtn');
+
+            // 停止之前的旋转（如果已经在旋转）  
+            document.getElementById('playBtn').classList.remove('playing');
+            // 更新音频源  
+            audioPlayer.src = event.target.getAttribute('data-src');
+            // 加载并播放新音频（如果需要）  
+            audioPlayer.load();
+            audioPlayer.play();
+            isPlaying = true;
+            document.getElementById('playBtn').classList.add('playing');
+
+            // 更新专辑图片  
+            albumArt.src = event.target.getAttribute('data-img');
+
+            // 可选：关闭歌单  
+            this.classList.remove('visible');
+        }
+    });
 
     // BGM音量显示同步
     const inputSliderBgm = document.querySelector('#bgm');
@@ -854,6 +1058,7 @@ function volumeSync() {
         sliderValueBgm.textContent = value1;
         sliderValueBgm.style.left = value1 / 2 + '%';
         sliderValueBgm.classList.add('show');
+        audioPlayer.volume = bgm.value / 100;
     }
     inputSliderBgm.onmouseleave = () => {
         sliderValueBgm.classList.remove('show');
@@ -880,5 +1085,12 @@ function volumeSync() {
                 event.preventDefault();
             }
         });
+    });
+}
+
+// 点击logo（acI18)
+function logoAchievement() {
+    document.getElementById('logo').addEventListener('click', function () {
+        document.getElementById('logo').classList.add('active');
     });
 }

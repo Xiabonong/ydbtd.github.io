@@ -314,7 +314,7 @@ header{
     cursor: pointer;
 }
 .switch{
-    position: relative;
+    position: fixed;
     height: 22px;
     width: 40px;
     border-radius: 25px;
@@ -485,29 +485,6 @@ header{
 }
 .introduction-container ul{
     list-style-type: none;
-}
-
-
-/* 难度设置 */
-.popup-difficulty{
-    position: absolute;  
-    top: 37%;  
-    left: 173%;  
-    border-radius: 18px;
-    transform: translate(-100%, -100%) scale(0);  
-    border: 1px solid black;  
-    padding: 20px;  
-    height: 300px;
-    width: 300px;
-    z-index: 200;  
-    opacity: 0;
-    background-color: var(--popbackground);
-    transition: transform 0.4s ease, opacity 0.4s ease;
-}
-.popup-difficulty.active{
-    transform: translate(-50%, -50%) scale(1); 
-    opacity: 0.95;  
-    transition: transform 0.4s ease, opacity 0.4s ease;  
 }
 
 
@@ -1531,4 +1508,122 @@ li{
     top: 60%;
     left: 24%;
     color: #dad5d5;
+}
+
+
+/* 音乐播放器 */
+.audio-container{
+    position: fixed;
+    width: 200px;
+    height: 90px;
+    background-color: var(--shell-color);
+    box-shadow: 0 2px 10px var(--grid-shadow);
+    border-radius: 10px;
+    bottom: 7.6%;
+    left: 3%;
+    overflow: hidden;
+}
+.audio-container img{
+    position: absolute;
+    border-radius: 50%;
+    bottom: 5%;
+    left: 5%;
+    width: 80px;
+    transition: transform 0.5s ease;
+    box-shadow: 0 3px 10px var(--grid-shadow);
+}
+#playBtn{
+    cursor: pointer;
+}
+.playing {  
+    animation: spin 5s linear infinite; /* 播放时旋转动画 */  
+}  
+@keyframes spin {  
+    from {  
+        transform: rotate(0deg);  
+    }  
+    to {  
+        transform: rotate(360deg);  
+    }  
+}  
+#toggle-playlist{
+    position: absolute;
+    bottom: 50%;
+    right: 40%;
+    cursor: pointer;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    width: 1px;
+    height: 1px;
+}
+#iconPlayList{
+    font-size: 50px;
+    font-weight: 700;
+}
+.hidden {  
+    transform: translate(-100%, -50%) scale(0);  
+    position: absolute; /* 或者其他适合您布局的定位方式 */  
+    width: 200px;
+    height: auto;
+    bottom: 2%;
+    left: 65%;
+    background-color: var(--popbackground);  
+    border: 1px solid #ccc;  
+    /* 其他样式 */  
+    border-radius: 10px;
+    transition: transform 0.4s ease, opacity 0.4s ease;  
+    opacity: 0;
+}  
+.hidden ul{
+    list-style: none;
+}
+.hidden ul li{
+    padding-left: 30px;
+    padding-top: 2px;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: var(--primary-color-light);
+    color: var(--text-color);
+    text-shadow: 0 1px 1px 3px var(--grid-shadow);
+    width: 90%;
+}
+/* 显示歌单时的样式，可能需要通过 JavaScript 动态添加 */  
+.visible {  
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;  
+    transition: transform 0.4s ease, opacity 0.4s ease;  
+}
+
+/* 成就系统 */
+.pop-acItem{
+    position: fixed;
+    width: 300px;
+    height: 120px;
+    background-color: var(--primary-color);
+    color: var(--shell-color);
+    bottom: 2%;
+    right: 1%;
+    z-index: 300;
+    border-radius: 10px;
+    transition: transform 0.5s ease; 
+    transform: translateY(120%);
+}
+.dark .pop-acItem{
+    color: #ddd;
+}
+.pop-acItem.active {  
+    transform: translateY(0); /* 平滑移动到所需位置 */  
+    transition: transform 0.5s ease; 
+}
+.pop-acItem h3{
+    padding-top: 12px;
+    padding-left: 10px;
+    font-size: 27px;
+}
+.pop-acItem p{
+    padding-top: 10px;
+    padding-left: 10px;
 }
