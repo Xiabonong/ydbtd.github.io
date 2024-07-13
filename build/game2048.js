@@ -914,6 +914,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // 重置成就
     function resetAchievement() {
+        // 成就类特调
         document.getElementById('submitBtn').classList.remove('active'); // acI13特调
         document.getElementById('logo').classList.remove('active'); // acI18特调
         document.getElementById('like1').classList.remove('active'); // acI22特调
@@ -921,6 +922,36 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById('like3').classList.remove('active');
         document.getElementById('like4').classList.remove('active');
         document.getElementById('like5').classList.remove('active');
+        // 文案特调
+        document.getElementById('ac1Content').textContent = "达成条件：******";
+        document.getElementById('ac2Content').textContent = "达成条件：******";
+        document.getElementById('ac3Content').textContent = "达成条件：******";
+        document.getElementById('ac4Content').textContent = "达成条件：******";
+        document.getElementById('ac5Content').textContent = "达成条件：******";
+        document.getElementById('ac6Content').textContent = "达成条件：******";
+        document.getElementById('ac7Content').textContent = "达成条件：******";
+        document.getElementById('ac8Content').textContent = "达成条件：******";
+        document.getElementById('ac9Content').textContent = "达成条件：******";
+        document.getElementById('ac10Content').textContent = "达成条件：******";
+        document.getElementById('ac11Content').textContent = "达成条件：******";
+        document.getElementById('ac12Content').textContent = "达成条件：******";
+        document.getElementById('ac13Content').textContent = "达成条件：******";
+        document.getElementById('ac14Content').textContent = "达成条件：******";
+        document.getElementById('ac15Content').textContent = "达成条件：******";
+        document.getElementById('ac16Content').textContent = "达成条件：******";
+        document.getElementById('ac17Content').textContent = "达成条件：******";
+        document.getElementById('ac18Content').textContent = "达成条件：******";
+        document.getElementById('ac19Content').textContent = "达成条件：******";
+        document.getElementById('ac20Content').textContent = "达成条件：******";
+        document.getElementById('ac21Content').textContent = "达成条件：******";
+        document.getElementById('ac22Content').textContent = "达成条件：******";
+        document.getElementById('ac23Content').textContent = "达成条件：******";
+        document.getElementById('ac24Content').textContent = "达成条件：******";
+        document.getElementById('ac25Content').textContent = "达成条件：******";
+        document.getElementById('ac26Content').textContent = "达成条件：******";
+        document.getElementById('ac27Content').textContent = "达成条件：******";
+        document.getElementById('ac28Content').textContent = "达成条件：******";
+        document.getElementById('ac29Content').textContent = "达成条件：******";
 
         let achievements = JSON.parse(localStorage.getItem('achievements') || '{}');
         for (let key in achievements) achievements[key] = false; // 将每个成就的完成状态设置为 false
@@ -962,35 +993,35 @@ document.addEventListener("DOMContentLoaded", function () {
     startChecking();
     function startChecking() {
         const acI = JSON.parse(localStorage.getItem('achievements')) || [];
-        if (!acI[0]) acI0_check();
-        if (!acI[1]) acI1_check();
-        if (!acI[2]) acI2_check();
-        if (!acI[3]) acI3_check();
-        if (!acI[4]) acI4_check();
-        if (!acI[5]) acI5_check();
-        if (!acI[6]) acI6_check();
-        if (!acI[7]) acI7_check();
-        if (!acI[8]) acI8_check();
-        if (!acI[9]) acI9_check();
-        if (!acI[10]) acI10_check();
-        if (!acI[11]) acI11_check();
-        if (!acI[12]) acI12_check();
-        if (!acI[13]) acI13_check();
-        if (!acI[14]) acI14_check();
-        if (!acI[15]) acI15_check();
-        if (!acI[16]) acI16_check();
-        if (!acI[17]) acI17_check();
-        if (!acI[18]) acI18_check();
-        if (!acI[19]) acI19_check();
-        if (!acI[20]) acI20_check();
-        if (!acI[21]) acI21_check();
-        if (!acI[22]) acI22_check();
-        if (!acI[23]) acI23_check();
-        if (!acI[24]) acI24_check();
-        if (!acI[25]) acI25_check();
-        if (!acI[26]) acI26_check();
-        if (!acI[27]) acI27_check();
-        if (!acI[28]) acI28_check();
+        if (!acI[0]) acI0_check(); else document.getElementById('ac1Content').textContent = "达成条件：第一次点击“开始游戏”";
+        if (!acI[1]) acI1_check(); else document.getElementById('ac2Content').textContent = "达成条件：第一次成功合成方块（第一次获得分数）";
+        if (!acI[2]) acI2_check(); else document.getElementById('ac3Content').textContent = "达成条件：分数第一次超过100";
+        if (!acI[3]) acI3_check(); else document.getElementById('ac4Content').textContent = "达成条件：分数第一次超过558";
+        if (!acI[4]) acI4_check(); else document.getElementById('ac5Content').textContent = "达成条件：分数第一次超过1000";
+        if (!acI[5]) acI5_check(); else document.getElementById('ac6Content').textContent = "达成条件：分数第一次超过10000";
+        if (!acI[6]) acI6_check(); else document.getElementById('ac7Content').textContent = "达成条件：分数第一次超过20000";
+        if (!acI[7]) acI7_check(); else document.getElementById('ac8Content').textContent = "达成条件：分数第一次超过25582";
+        if (!acI[8]) acI8_check(); else document.getElementById('ac9Content').textContent = "达成条件：第一次失败";
+        if (!acI[9]) acI9_check(); else document.getElementById('ac10Content').textContent = "达成条件：移动超过100次";
+        if (!acI[10]) acI10_check(); else document.getElementById('ac11Content').textContent = "达成条件：移动超过558次";
+        if (!acI[11]) acI11_check(); else document.getElementById('ac12Content').textContent = "达成条件：移动超过1000次";
+        if (!acI[12]) acI12_check(); else document.getElementById('ac13Content').textContent = "达成条件：移动超过10000次";
+        if (!acI[13]) acI13_check(); else document.getElementById('ac14Content').textContent = "达成条件：移动超过100000次";
+        if (!acI[14]) acI14_check(); else document.getElementById('ac15Content').textContent = "达成条件：移动超过1000000次";
+        if (!acI[15]) acI15_check(); else document.getElementById('ac16Content').textContent = "达成条件：第一次合成2048";
+        if (!acI[16]) acI16_check(); else document.getElementById('ac17Content').textContent = "达成条件：第一次使用意见反馈系统";
+        if (!acI[17]) acI17_check(); else document.getElementById('ac18Content').textContent = "达成条件：把音效调到最大并进行一次合成";
+        if (!acI[18]) acI18_check(); else document.getElementById('ac19Content').textContent = "达成条件：首次点击LOGO";
+        if (!acI[19]) acI19_check(); else document.getElementById('ac20Content').textContent = "达成条件：在玩法介绍页面停留2分钟";
+        if (!acI[20]) acI20_check(); else document.getElementById('ac21Content').textContent = "达成条件：在系统时间21:00后到05:00前开启夜间模式";
+        if (!acI[21]) acI21_check(); else document.getElementById('ac22Content').textContent = "达成条件：排行榜第一名";
+        if (!acI[22]) acI22_check(); else document.getElementById('ac23Content').textContent = "达成条件：在制作团队界面给所有人点满赞";
+        if (!acI[23]) acI23_check(); else document.getElementById('ac24Content').textContent = "达成条件：反馈超过十条建议";
+        if (!acI[24]) acI24_check(); else document.getElementById('ac25Content').textContent = "达成条件：两秒钟之内操作(wasd)移动超过15次";
+        if (!acI[25]) acI25_check(); else document.getElementById('ac26Content').textContent = "达成条件：两秒钟之内切换模式10次";
+        if (!acI[26]) acI26_check(); else document.getElementById('ac27Content').textContent = "达成条件：点击开始游戏后五分钟内无任何操作";
+        if (!acI[27]) acI27_check(); else document.getElementById('ac28Content').textContent = "达成条件：在点击开始游戏后八分钟内通关游戏";
+        if (!acI[28]) acI28_check(); else document.getElementById('ac29Content').textContent = "达成条件：在系统时间23:00后到05:00期间，在夜间模式下，音量、音效都为10的情况下点击开始游戏";
     }
 
     

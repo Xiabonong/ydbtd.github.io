@@ -1,5 +1,8 @@
 const sidebarContent = `
 <!-- UI界面 -->
+    <!-- 隐藏的 div 用于预载图片 -->
+    <div id="preloadImageContainer" style="display: none;"></div>
+    
     <div class="containerAll">
         <!-- 分数板 -->
         <div class="scores-container">
@@ -658,6 +661,7 @@ document.addEventListener('DOMContentLoaded', () => {
     showIntroductionNav();
     volumeSync();
     logoAchievement();
+    preloadImage();
 });
 
 function initUI() {
@@ -1092,5 +1096,14 @@ function volumeSync() {
 function logoAchievement() {
     document.getElementById('logo').addEventListener('click', function () {
         document.getElementById('logo').classList.add('active');
+    });
+}
+
+// 预载图片
+function preloadImage() {
+    window.addEventListener('load', function () {
+        var img = new Image();
+        img.src = 'image/cyber.jpg';
+        document.getElementById('preloadImageContainer').appendChild(img);
     });
 }
