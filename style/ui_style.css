@@ -1579,7 +1579,7 @@ li{
     list-style: none;
 }
 .hidden ul li{
-    padding-left: 30px;
+    padding-left: 18px;
     padding-top: 2px;
     font-size: 20px;
     font-weight: 600;
@@ -1589,8 +1589,10 @@ li{
     color: var(--text-color);
     text-shadow: 0 1px 1px 3px var(--grid-shadow);
     width: 90%;
+    margin-top: 8px;
+    margin-left: 8px;
 }
-/* 显示歌单时的样式，可能需要通过 JavaScript 动态添加 */  
+/* 显示歌单时的样式 */  
 .visible {  
     transform: translate(-50%, -50%) scale(1);
     opacity: 1;  

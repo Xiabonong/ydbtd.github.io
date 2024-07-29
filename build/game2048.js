@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.addEventListener('keydown', function (event) {
         // 检查是否同时按下了Alt键和F5键
-        if ((event.altKey || event.metaKey) && (event.key === 't' || event.key === 'T')) {
+        if (event.altKey && (event.key === 't' || event.key === 'T')) {
             event.preventDefault(); // 阻止默认行为
             refreshJson();          // 调用刷新JSON数据的函数
         }

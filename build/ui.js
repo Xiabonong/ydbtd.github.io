@@ -437,7 +437,7 @@ const sidebarContent = `
                 </li>  
                 <li class="achievement-item">  
                     <h3>爱要大声说出来</h3>  
-                    <p>恨也是（第一次使用意见反馈系统）</p>  
+                    <p>恨也是</p>  
                     <p id="ac17Content">达成条件：******</p>
                 </li>  
                 <li class="achievement-item">  
@@ -598,7 +598,7 @@ const sidebarContent = `
     </div>
     <div id="ac17" class="pop-acItem">
         <h3>爱要大声说出来</h3>  
-        <p>恨也是（第一次使用意见反馈系统）</p>  
+        <p>恨也是</p>  
     </div>
     <div id="ac18" class="pop-acItem">
         <h3>耳膜破坏者</h3>  
@@ -1025,11 +1025,13 @@ function volumeSync() {
             document.getElementById('playBtn').classList.add('playing');
         }
     });
+
     // 音乐列表隐藏或显示
     document.getElementById('toggle-playlist').addEventListener('click', function () {
         const playlist = document.getElementById('playlist');
         playlist.classList.toggle('visible');
     });
+
     // 更新音乐及专辑图册，同时重置旋转
     document.getElementById('playlist').addEventListener('click', function (event) {
         if (event.target.tagName === 'LI') {
